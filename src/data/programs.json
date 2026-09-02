@@ -1,0 +1,41 @@
+[
+  {
+    "id": "prog-beginner-01",
+    "title": "General English - Foundation & Basic Conversation",
+    "description": "Program dirancang untuk membangun fondasi grammar dasar, kosakata sehari-hari, dan keberanian berbicara dalam Bahasa Inggris.",
+    "level": "Beginner",
+    "recommendedScoreRange": "0 - 40%",
+    "features": [
+      "Pemahaman Basic Tenses & Sentence Structure",
+      "Kosakata Sehari-hari & Praktik Pronunciation",
+      "Kelas Interaktif dengan Pendampingan Intensive",
+      "Latihan Percakapan Dasar (Daily Conversation)"
+    ]
+  },
+  {
+    "id": "prog-intermediate-01",
+    "title": "English Intermediate - Fluency & Communication",
+    "description": "Program untuk meningkatkan kelancaran berbicara, memperluas tata bahasa kompleks, dan kesiapan komunikasi profesional.",
+    "level": "Intermediate",
+    "recommendedScoreRange": "41 - 75%",
+    "features": [
+      "Penguasaan Complex Grammar & Active Idioms",
+      "Diskusi Interaktif & Mini Presentation",
+      "Persiapan Business Communication & Email Writing",
+      "Umpan Balik Pronunciation & Accuracy"
+    ]
+  },
+  {
+    "id": "prog-advanced-01",
+    "title": "Advanced Mastery & Business Proficiency",
+    "description": "Program tingkat lanjut untuk mencapai kefasihan alami, gaya bahasa profesional, negosiasi, dan persiapan sertifikasi TOEFL/IELTS.",
+    "level": "Advanced",
+    "recommendedScoreRange": "76 - 100%",
+    "features": [
+      "Debat, Public Speaking & Professional Negotiation",
+      "Penyempurnaan Academic & Business Writing",
+      "Strategi Sertifikasi International (TOEFL / IELTS)",
+      "Mentoring One-on-One & Case Study Discussion"
+    ]
+  }
+]
