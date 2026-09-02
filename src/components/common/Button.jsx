@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Reusable Button Component matching design system mockups
  */

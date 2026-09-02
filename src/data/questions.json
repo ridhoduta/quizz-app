@@ -3,19 +3,22 @@
     "id": 1,
     "question": "She _____ to the library every Saturday morning.",
     "options": ["go", "goes", "going", "gone"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 2,
     "question": "They _____ living in Jakarta since 2018.",
     "options": ["have been", "were", "are", "had"],
-    "correctAnswer": 0
+    "correctAnswer": 0,
+    "timeLimitSeconds": 30
   },
   {
     "id": 3,
     "question": "If it rains tomorrow, we _____ the outdoor event.",
     "options": ["canceled", "will cancel", "would cancel", "canceling"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 4,
@@ -26,49 +29,57 @@
       "Neither of the report is complete.",
       "Neither of the report are complete."
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 5,
     "question": "Choose the word closest in meaning to 'METICULOUS':",
     "options": ["Careless", "Careful and precise", "Hurried", "Generous"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 6,
     "question": "The manager insisted that the report _____ submitted before 5 PM.",
     "options": ["is", "was", "be", "being"],
-    "correctAnswer": 2
+    "correctAnswer": 2,
+    "timeLimitSeconds": 30
   },
   {
     "id": 7,
     "question": "Had I known about the traffic, I _____ earlier.",
     "options": ["would leave", "would have left", "left", "will leave"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 8,
     "question": "The project was delayed _____ unexpected supply chain issues.",
     "options": ["because", "due to", "although", "despite"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 9,
     "question": "What is the antonym of 'OBSOLETE'?",
     "options": ["Ancient", "Modern", "Useless", "Redundant"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 10,
     "question": "She succeeded in completing the marathon, _____ having no prior training.",
     "options": ["despite", "in spite", "although", "even"],
-    "correctAnswer": 0
+    "correctAnswer": 0,
+    "timeLimitSeconds": 30
   },
   {
     "id": 11,
     "question": "By the time the conference ends, Dr. Aris _____ his keynote speech.",
     "options": ["delivers", "will have delivered", "delivered", "has delivered"],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 12,
@@ -79,13 +90,15 @@
       "The new proposal was presented by the team tomorrow.",
       "The new proposal has been presented by the team tomorrow."
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 13,
     "question": "He has a strong reputation for being _____; he always keeps his promises.",
     "options": ["reliable", "reluctant", "redundant", "reckless"],
-    "correctAnswer": 0
+    "correctAnswer": 0,
+    "timeLimitSeconds": 30
   },
   {
     "id": 14,
@@ -96,12 +109,14 @@
       "he arrived",
       "did he arrived"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "timeLimitSeconds": 30
   },
   {
     "id": 15,
     "question": "The company expects all employees to comply _____ the safety guidelines.",
     "options": ["with", "to", "at", "for"],
-    "correctAnswer": 0
+    "correctAnswer": 0,
+    "timeLimitSeconds": 30
   }
 ]

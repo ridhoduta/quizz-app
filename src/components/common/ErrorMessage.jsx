@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Error/Alert Message Banner Component
  */

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { validateBiodata } from '../utils/validation';
 
 export const USER_SESSION_KEY = 'userSession';
@@ -15,27 +15,23 @@ const INITIAL_BIODATA = {
  * Custom hook to manage user biodata form state, validation, and localStorage persistence
  */
 export const useBiodata = () => {
-  const [biodata, setBiodata] = useState(INITIAL_BIODATA);
-  const [errors, setErrors] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Restore biodata from localStorage on mount
-  useEffect(() => {
+  const [biodata, setBiodata] = useState(() => {
     try {
       const savedSession = localStorage.getItem(USER_SESSION_KEY);
       if (savedSession) {
         const parsed = JSON.parse(savedSession);
         if (parsed && typeof parsed === 'object') {
-          setBiodata((prev) => ({ ...prev, ...parsed }));
+          return { ...INITIAL_BIODATA, ...parsed };
         }
       }
     } catch (err) {
       console.error('Failed to parse userSession from localStorage:', err);
-      localStorage.removeItem(USER_SESSION_KEY);
-    } finally {
-      setIsLoaded(true);
     }
-  }, []);
+    return INITIAL_BIODATA;
+  });
+
+  const [errors, setErrors] = useState({});
+  const isLoaded = true;
 
   // Update field value and clear specific field error
   const updateField = useCallback((field, value) => {

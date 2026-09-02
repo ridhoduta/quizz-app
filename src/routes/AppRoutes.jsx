@@ -1,53 +1,55 @@
-import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';
+import QuizInfoPage from '../pages/QuizInfoPage';
 import QuizPage from '../pages/QuizPage';
 import ResultPage from '../pages/ResultPage';
 
 export const USER_SESSION_KEY = 'userSession';
 export const QUIZ_RESULT_KEY = 'quizResult';
 
-/**
- * Route Guard for /quiz
- * Validates whether user session exists in localStorage
- */
-const QuizRouteGuard = ({ children }) => {
+const checkQuizSessionValid = () => {
   try {
     const session = localStorage.getItem(USER_SESSION_KEY);
-    if (!session) {
-      return <Navigate to="/" replace />;
-    }
+    if (!session) return false;
     const parsed = JSON.parse(session);
-    if (!parsed || typeof parsed !== 'object' || !parsed.name) {
-      return <Navigate to="/" replace />;
-    }
+    return Boolean(parsed && typeof parsed === 'object' && parsed.name);
   } catch (err) {
-    console.error('Quiz route guard validation failed:', err);
+    console.error('Quiz session validation failed:', err);
+    return false;
+  }
+};
+
+const checkResultSessionValid = () => {
+  try {
+    const result = localStorage.getItem(QUIZ_RESULT_KEY);
+    if (!result) return false;
+    const parsed = JSON.parse(result);
+    return Boolean(parsed && typeof parsed === 'object' && parsed.score !== undefined);
+  } catch (err) {
+    console.error('Result session validation failed:', err);
+    return false;
+  }
+};
+
+/**
+ * Route Guard for /quiz & /info
+ */
+const QuizRouteGuard = ({ children }) => {
+  const isValid = checkQuizSessionValid();
+  if (!isValid) {
     return <Navigate to="/" replace />;
   }
-
   return children;
 };
 
 /**
  * Route Guard for /result
- * Validates whether quiz result exists in localStorage
  */
 const ResultRouteGuard = ({ children }) => {
-  try {
-    const result = localStorage.getItem(QUIZ_RESULT_KEY);
-    if (!result) {
-      return <Navigate to="/quiz" replace />;
-    }
-    const parsed = JSON.parse(result);
-    if (!parsed || typeof parsed !== 'object' || parsed.score === undefined) {
-      return <Navigate to="/quiz" replace />;
-    }
-  } catch (err) {
-    console.error('Result route guard validation failed:', err);
+  const isValid = checkResultSessionValid();
+  if (!isValid) {
     return <Navigate to="/quiz" replace />;
   }
-
   return children;
 };
 
@@ -59,6 +61,16 @@ export const AppRoutes = () => {
     <Routes>
       {/* Landing Page */}
       <Route path="/" element={<LandingPage />} />
+
+      {/* Info Page */}
+      <Route
+        path="/info"
+        element={
+          <QuizRouteGuard>
+            <QuizInfoPage />
+          </QuizRouteGuard>
+        }
+      />
 
       {/* Protected Quiz Page */}
       <Route

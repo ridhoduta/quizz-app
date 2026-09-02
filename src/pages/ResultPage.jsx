@@ -1,9 +1,9 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useQuiz from '../hooks/useQuiz';
 import useBiodata from '../hooks/useBiodata';
 import ResultCard from '../components/result/ResultCard';
 import RecommendationCard from '../components/result/RecommendationCard';
+import QuestionReviewList from '../components/result/QuestionReviewList';
 import WhatsAppButton from '../components/result/WhatsAppButton';
 import Loading from '../components/common/Loading';
 
@@ -16,10 +16,10 @@ export const ResultPage = () => {
     return <Loading fullScreen text="Memuat hasil placement test..." />;
   }
 
-  // Handle resetting test and returning to kuis/landing
+  // Handle resetting test and returning to info/landing
   const handleRetakeTest = () => {
     resetQuiz();
-    navigate('/quiz');
+    navigate('/info');
   };
 
   return (
@@ -40,7 +40,7 @@ export const ResultPage = () => {
             <span className="material-symbols-outlined text-[18px] filled">
               check_circle
             </span>
-            <span>Test Completed</span>
+            <span>Test Selesai</span>
           </div>
         </div>
       </header>
@@ -50,7 +50,7 @@ export const ResultPage = () => {
         {/* Page Hero Header */}
         <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
           <span className="text-[#A9213F] font-bold text-xs uppercase tracking-wider">
-            PLACEMENT TEST RESULT
+            HASIL PLACEMENT TEST
           </span>
           <h1 className="text-3xl md:text-4xl font-extrabold text-[#012C64]">
             Tingkat Kemampuan Anda
@@ -77,6 +77,9 @@ export const ResultPage = () => {
             <RecommendationCard recommendation={quizResult.recommendation} />
           </div>
         )}
+
+        {/* Question-by-Question Detailed Review List */}
+        <QuestionReviewList userAnswers={quizResult?.answers || {}} />
 
         {/* WhatsApp CTA & Retake Actions */}
         <WhatsAppButton

@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * ResultCard Component displaying test score percentage wheel, level title, and score statistics
  */

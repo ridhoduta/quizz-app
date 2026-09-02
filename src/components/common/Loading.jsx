@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Loading spinner component for fallback / data fetching states
  */

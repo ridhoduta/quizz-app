@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useBiodata from '../hooks/useBiodata';
 import Input from '../components/common/Input';
@@ -19,7 +18,7 @@ export const LandingPage = () => {
     e.preventDefault();
     const result = saveBiodata();
     if (result.success) {
-      navigate('/quiz');
+      navigate('/info');
     }
   };
 

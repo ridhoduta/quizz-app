@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Reusable Progress Bar Component with smooth transition
  */
