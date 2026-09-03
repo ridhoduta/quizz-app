@@ -1,9 +1,3 @@
-/**
- * QuestionNavigation — Sidebar variant.
- * - Free navigation across all questions.
- * - Displays clear checkmark badges (✓ / check) for answered questions.
- * - Green = Answered, Red = Unanswered.
- */
 export const QuestionNavigation = ({
   currentIndex = 0,
   totalQuestions = 15,
@@ -15,28 +9,8 @@ export const QuestionNavigation = ({
 }) => {
   const isLast = currentIndex === totalQuestions - 1;
 
-  const answeredCount = Object.keys(answers).filter(
-    (k) => answers[k] !== undefined && answers[k] !== null
-  ).length;
-
   return (
     <div className="flex flex-col gap-4 w-full">
-
-      {/* Progress Summary */}
-      <div className="bg-[#F0F4FF] border border-[#C4D0F0] rounded-xl p-3 text-center">
-        <p className="text-xs text-[#434750] mb-1">Kemajuan Menjawab</p>
-        <p className="text-2xl font-extrabold text-[#22437C]">
-          {answeredCount}
-          <span className="text-base font-medium text-gray-500"> / {totalQuestions}</span>
-        </p>
-        <div className="mt-2 w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-          <div
-            className="h-full bg-[#22437C] rounded-full transition-all duration-500"
-            style={{ width: `${totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0}%` }}
-          />
-        </div>
-      </div>
-
       {/* Legend */}
       <div className="flex flex-wrap gap-2 text-[10px] font-semibold">
         <span className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-300 text-emerald-800 px-2.5 py-1 rounded-full">
