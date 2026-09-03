@@ -24,7 +24,7 @@ export const ResultPage = () => {
 
   return (
     <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
-      {/* Top Navigation Header */}
+      {/* ── 1. NAVBAR ── */}
       <header className="bg-white border-b border-[#C4C6D1] sticky top-0 z-40 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -45,51 +45,72 @@ export const ResultPage = () => {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 flex flex-col gap-8">
-        {/* Page Hero Header */}
-        <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
-          <span className="text-[#A9213F] font-bold text-xs uppercase tracking-wider">
-            HASIL PLACEMENT TEST
-          </span>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-[#012C64]">
-            Tingkat Kemampuan Anda
-          </h1>
-          <p className="text-sm md:text-base text-[#434750] leading-relaxed">
-            Berikut adalah hasil evaluasi placement test berdasarkan jawaban Anda.
-          </p>
-        </div>
+      {/* Main Content Container */}
+      <main className="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 flex flex-col gap-10">
 
-        {/* Result Statistics Wheel & Grid */}
-        <ResultCard quizResult={quizResult} />
+        {/* ── 2. HASIL TEST SECTION ── */}
+        <section className="flex flex-col gap-6">
+          <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
+            <span className="text-[#A9213F] font-bold text-xs uppercase tracking-wider">
+              PLACEMENT TEST RESULT
+            </span>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#012C64]">
+              HASIL TEST
+            </h1>
+            <p className="text-sm md:text-base text-[#434750] leading-relaxed">
+              Berikut adalah evaluasi skor akhir, tingkat kemampuan, dan ringkasan pencapaian Anda.
+            </p>
+          </div>
 
-        {/* Recommended Program Section */}
+          {/* Circle Gauge & 3 Stat Cards Row */}
+          <ResultCard quizResult={quizResult} />
+        </section>
+
+
+        {/* ── 3. REKOMENDASI PROGRAM SECTION ── */}
         {quizResult?.recommendation && (
-          <div className="flex flex-col gap-3">
-            <div className="mb-1">
-              <h3 className="text-xl md:text-2xl font-bold text-[#012C64] mb-1">
-                Rekomendasi Program Belajar
-              </h3>
-              <p className="text-xs md:text-sm text-[#434750]">
-                Berdasarkan skor dan level hasil test Anda, kami merekomendasikan program berikut:
+          <section className="flex flex-col gap-4">
+            <div className="text-center md:text-left">
+              <h2 className="text-xl md:text-2xl font-extrabold text-[#012C64]">
+                REKOMENDASI PROGRAM
+              </h2>
+              <p className="text-xs md:text-sm text-[#434750] mt-1">
+                Program belajar yang disesuaikan khusus dengan skor dan tingkat kemampuan Anda.
               </p>
             </div>
             <RecommendationCard recommendation={quizResult.recommendation} />
-          </div>
+          </section>
         )}
 
-        {/* Question-by-Question Detailed Review List */}
-        <QuestionReviewList userAnswers={quizResult?.answers || {}} />
+        {/* ── 4. CTA SECTION ── */}
+        <section>
+          <WhatsAppButton
+            userSession={biodata}
+            quizResult={quizResult}
+            onRetakeTest={handleRetakeTest}
+          />
+        </section>
+       
+        
 
-        {/* WhatsApp CTA & Retake Actions */}
-        <WhatsAppButton
-          userSession={biodata}
-          quizResult={quizResult}
-          onRetakeTest={handleRetakeTest}
-        />
+
+        
+        {/* ── 5. REVIEW SOAL & JAWABAN SECTION ── */}
+        <section className="flex flex-col gap-4">
+          <div className="text-center md:text-left">
+            <h2 className="text-xl md:text-2xl font-extrabold text-[#012C64]">
+              REVIEW SOAL & JAWABAN
+            </h2>
+            <p className="text-xs md:text-sm text-[#434750] mt-1">
+              Evaluasi jawaban Anda untuk setiap nomor soal beserta kunci jawaban yang benar.
+            </p>
+          </div>
+          <QuestionReviewList userAnswers={quizResult?.answers || {}} />
+        </section>
+
       </main>
 
-      {/* Footer */}
+      {/* ── 6. FOOTER ── */}
       <footer className="bg-white border-t border-[#C4C6D1] text-xs text-[#434750] py-6 mt-auto">
         <div className="max-w-5xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
           <span className="font-bold text-[#012C64]">English Placement Test Engine</span>

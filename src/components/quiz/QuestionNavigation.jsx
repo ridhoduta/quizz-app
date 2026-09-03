@@ -1,14 +1,13 @@
 /**
  * QuestionNavigation — Sidebar variant.
- * Compact grid of question buttons: Green = Answered, Red = Unanswered.
- * Lock/unlock icon shown per question.
- * "Selanjutnya" button locks current question before advancing.
+ * - Free navigation across all questions.
+ * - Displays clear checkmark badges (✓ / check) for answered questions.
+ * - Green = Answered, Red = Unanswered.
  */
 export const QuestionNavigation = ({
   currentIndex = 0,
   totalQuestions = 15,
   answers = {},
-  lockedQuestions = {},
   questions = [],
   onGoToQuestion,
   onNext,
@@ -30,7 +29,6 @@ export const QuestionNavigation = ({
           {answeredCount}
           <span className="text-base font-medium text-gray-500"> / {totalQuestions}</span>
         </p>
-        {/* Mini progress bar */}
         <div className="mt-2 w-full bg-gray-200 rounded-full h-2 overflow-hidden">
           <div
             className="h-full bg-[#22437C] rounded-full transition-all duration-500"
@@ -42,56 +40,53 @@ export const QuestionNavigation = ({
       {/* Legend */}
       <div className="flex flex-wrap gap-2 text-[10px] font-semibold">
         <span className="flex items-center gap-1 bg-emerald-50 border border-emerald-300 text-emerald-800 px-2 py-0.5 rounded-full">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" /> Terjawab
+          <span className="w-4 h-4 rounded-full bg-emerald-600 text-white font-extrabold text-[9px] flex items-center justify-center">✓</span> Terjawab
         </span>
         <span className="flex items-center gap-1 bg-red-50 border border-red-300 text-red-800 px-2 py-0.5 rounded-full">
           <span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Belum Dijawab
         </span>
-        <span className="flex items-center gap-1 bg-gray-100 border border-gray-300 text-gray-700 px-2 py-0.5 rounded-full">
-          <span className="material-symbols-outlined text-[10px]">lock</span> Terkunci
-        </span>
       </div>
 
-      {/* Grid of question buttons */}
+      {/* Grid of question buttons with answered checkmark badges */}
       <div className="grid grid-cols-5 gap-1.5">
         {Array.from({ length: totalQuestions }).map((_, idx) => {
           const questionId = questions[idx]?.id || idx + 1;
           const isAnswered = answers[questionId] !== undefined && answers[questionId] !== null;
-          const isLocked = Boolean(lockedQuestions[questionId]);
           const isActive = idx === currentIndex;
 
-          // Locked questions: grey out, disable click
           let style = '';
-          if (isLocked) {
-            style = isActive
-              ? 'bg-gray-400 border-gray-500 text-white shadow-md cursor-not-allowed'
-              : 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed opacity-60';
-          } else if (isActive) {
+
+          if (isActive) {
             style = isAnswered
-              ? 'bg-emerald-500 border-emerald-600 text-white shadow-md cursor-pointer'
-              : 'bg-[#22437C] border-[#1a3463] text-white shadow-md cursor-pointer';
+              ? 'bg-emerald-600 border-emerald-700 text-white font-extrabold shadow-md ring-2 ring-emerald-400 scale-105'
+              : 'bg-[#22437C] border-[#1a3463] text-white font-extrabold shadow-md ring-2 ring-blue-400 scale-105';
           } else if (isAnswered) {
-            style = 'bg-emerald-50 border-emerald-400 text-emerald-900 hover:bg-emerald-100 cursor-pointer';
+            style = 'bg-emerald-50 border-emerald-400 text-emerald-900 hover:bg-emerald-100 cursor-pointer font-bold';
           } else {
-            style = 'bg-red-50 border-red-300 text-red-800 hover:bg-red-100 cursor-pointer';
+            style = 'bg-red-50 border-red-300 text-red-800 hover:bg-red-100 cursor-pointer font-bold';
           }
 
           return (
-            <button
-              key={idx}
-              type="button"
-              disabled={isLocked}
-              onClick={() => !isLocked && onGoToQuestion(idx)}
-              title={`Soal ${idx + 1}: ${isAnswered ? 'Terjawab' : 'Belum'} | ${isLocked ? 'Terkunci — tidak bisa dipilih' : 'Terbuka'}`}
-              className={`h-10 rounded-lg border text-[11px] font-bold transition-all duration-150 flex flex-col items-center justify-center gap-0.5 ${style} ${isActive && !isLocked ? 'scale-105' : ''}`}
-            >
-              <span className="leading-none">{idx + 1}</span>
-              <span className={`material-symbols-outlined leading-none ${
-                isLocked ? (isActive ? 'text-white/70' : 'text-gray-400') : isActive ? 'text-white/80' : isAnswered ? 'text-emerald-600' : 'text-red-400'
-              }`} style={{ fontSize: '10px' }}>
-                {isLocked ? 'lock' : 'lock_open'}
-              </span>
-            </button>
+            <div key={idx} className="relative">
+              <button
+                type="button"
+                onClick={() => onGoToQuestion(idx)}
+                title={`Soal ${idx + 1}: ${isAnswered ? 'Terjawab' : 'Belum Dijawab'}`}
+                className={`w-full h-10 rounded-lg border text-[11px] transition-all duration-150 flex items-center justify-center select-none ${style}`}
+              >
+                <span className="leading-none">{idx + 1}</span>
+              </button>
+
+              {/* Explicit Checkmark Badge Mark for Answered Questions */}
+              {isAnswered && (
+                <span
+                  className="absolute -top-1 -right-1 bg-emerald-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-extrabold shadow-xs border border-white z-10 pointer-events-none"
+                  title="Sudah Dijawab"
+                >
+                  ✓
+                </span>
+              )}
+            </div>
           );
         })}
       </div>

@@ -11,7 +11,6 @@ export const QuestionCard = ({
   question,
   selectedOption,
   onSelectOption,
-  isLocked = false,
 }) => {
   if (!question) {
     return (
@@ -21,33 +20,31 @@ export const QuestionCard = ({
     );
   }
 
-  return (
-    <div className={`bg-white rounded-2xl border shadow-sm p-6 md:p-8 transition-all duration-300 ${
-      isLocked ? 'border-red-200 bg-red-50/20' : 'border-gray-200'
-    }`}>
-      {/* Locked Banner */}
-      {isLocked && (
-        <div className="mb-5 bg-red-50 border border-red-200 text-red-700 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2">
-          <span className="material-symbols-outlined text-base">lock</span>
-          <span>Soal ini <strong>TERKUNCI</strong> — waktu habis, jawaban tidak dapat diubah.</span>
-        </div>
-      )}
+  const isAnswered = selectedOption !== undefined && selectedOption !== null;
+  const selectedLetter = isAnswered ? OPTION_LETTERS[selectedOption] : null;
 
-      {/* Question Number + Lock status badge */}
-      <div className="flex items-center justify-between mb-4">
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8 transition-all duration-300">
+      {/* Question Number + Answered Status Badge */}
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
           Soal {questionNumber} dari {totalQuestions}
         </span>
-        <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border ${
-          isLocked
-            ? 'bg-red-100 text-red-700 border-red-200'
-            : 'bg-emerald-100 text-emerald-700 border-emerald-200'
-        }`}>
-          <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>
-            {isLocked ? 'lock' : 'lock_open'}
-          </span>
-          {isLocked ? 'Terkunci' : 'Terbuka'}
-        </span>
+
+        <div>
+          {/* Mark / Badge if user has answered */}
+          {isAnswered ? (
+            <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>check_circle</span>
+              Sudah Dijawab ({selectedLetter})
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300">
+              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>help</span>
+              Belum Dijawab
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Divider */}
@@ -68,7 +65,6 @@ export const QuestionCard = ({
               letter={letter}
               text={optionText}
               isSelected={selectedOption === index}
-              disabled={isLocked}
               onClick={() => onSelectOption(index)}
             />
           );

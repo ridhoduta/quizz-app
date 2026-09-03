@@ -19,10 +19,8 @@ export const QuizPage = () => {
     currentQuestion,
     totalQuestions,
     answers,
-    lockedQuestions,
     isLoaded,
     selectAnswer,
-    lockQuestion,
     nextQuestion,
     goToQuestion,
     submitQuiz,
@@ -60,21 +58,20 @@ export const QuizPage = () => {
     };
   }, [enterFullscreen]);
 
-  /* ── Timer up: lock + advance ── */
-  const handleTimeUp = useCallback(() => {
-    if (currentQuestion) lockQuestion(currentQuestion.id);
-    if (currentIndex < totalQuestions - 1) {
-      nextQuestion();
-    } else {
-      setIsModalOpen(true);
+  // Handle final quiz submission and navigate to /result
+  const handleConfirmSubmit = useCallback(() => {
+    submitQuiz();
+    setIsModalOpen(false);
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
     }
-  }, [currentQuestion, currentIndex, totalQuestions, lockQuestion, nextQuestion]);
+    navigate('/result');
+  }, [submitQuiz, navigate]);
 
-  /* ── Next button: lock + advance ── */
-  const handleNextWithLock = useCallback(() => {
-    if (currentQuestion) lockQuestion(currentQuestion.id);
-    nextQuestion();
-  }, [currentQuestion, lockQuestion, nextQuestion]);
+  /* ── Overall 10-Minute Timer expiration: auto submit test ── */
+  const handleOverallTimeUp = useCallback(() => {
+    handleConfirmSubmit();
+  }, [handleConfirmSubmit]);
 
   if (!isLoaded) {
     return <Loading fullScreen text="Memuat kuis placement test..." />;
@@ -84,16 +81,6 @@ export const QuizPage = () => {
     (k) => answers[k] !== undefined && answers[k] !== null
   ).length;
   const unansweredCount = totalQuestions - answeredCount;
-  const isCurrentLocked = Boolean(currentQuestion && lockedQuestions[currentQuestion.id]);
-
-  const handleConfirmSubmit = () => {
-    submitQuiz();
-    setIsModalOpen(false);
-    if (document.fullscreenElement && document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-    }
-    navigate('/result');
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F1F4FB] font-sans antialiased text-[#151C27]">
@@ -115,12 +102,6 @@ export const QuizPage = () => {
             <span className="text-xs font-bold text-[#22437C] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
               Soal {currentIndex + 1} / {totalQuestions}
             </span>
-            {isCurrentLocked && (
-              <span className="text-xs font-bold text-red-700 bg-red-50 border border-red-200 px-3 py-1 rounded-full flex items-center gap-1">
-                <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>lock</span>
-                Terkunci
-              </span>
-            )}
           </div>
 
           {/* Right: fullscreen + submit */}
@@ -153,7 +134,6 @@ export const QuizPage = () => {
             totalQuestions={totalQuestions}
             question={currentQuestion}
             selectedOption={currentQuestion ? answers[currentQuestion.id] : undefined}
-            isLocked={isCurrentLocked}
             onSelectOption={(optionIndex) =>
               currentQuestion && selectAnswer(currentQuestion.id, optionIndex)
             }
@@ -163,28 +143,21 @@ export const QuizPage = () => {
         {/* ── RIGHT: Sidebar ── */}
         <div className="flex flex-col gap-4">
 
-          {/* Timer Card */}
-          <div className={`bg-white rounded-2xl border shadow-sm p-5 flex flex-col items-center gap-3 transition-all duration-300 ${
-            isCurrentLocked
-              ? 'border-red-200'
-              : 'border-gray-200'
-          }`}>
-            <div className="flex items-center gap-2 self-start">
+          {/* Overall 10-Minute Timer Card */}
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 transition-all duration-300">
+            <div className="flex items-center gap-2 self-start border-b border-gray-100 pb-2 w-full">
               <span className="material-symbols-outlined text-[#22437C] text-base">timer</span>
               <span className="text-xs font-bold text-[#012C64] uppercase tracking-wide">
-                Waktu Soal Ini
+                Sisa Waktu Kuis (Total 10m)
               </span>
             </div>
 
-            {currentQuestion && (
-              <QuestionTimer
-                key={currentQuestion.id}
-                duration={currentQuestion.timeLimitSeconds || 30}
-                onTimeUp={handleTimeUp}
-                isActive={!isModalOpen && isFullscreen && !isCurrentLocked}
-                isLocked={isCurrentLocked}
-              />
-            )}
+            <QuestionTimer
+              key="total-quiz-timer"
+              duration={600}
+              onTimeUp={handleOverallTimeUp}
+              isActive={!isModalOpen && isFullscreen}
+            />
           </div>
 
           {/* Navigation Card */}
@@ -193,10 +166,9 @@ export const QuizPage = () => {
               currentIndex={currentIndex}
               totalQuestions={totalQuestions}
               answers={answers}
-              lockedQuestions={lockedQuestions}
               questions={questions}
               onGoToQuestion={goToQuestion}
-              onNext={handleNextWithLock}
+              onNext={nextQuestion}
               onSubmitClick={() => setIsModalOpen(true)}
             />
           </div>

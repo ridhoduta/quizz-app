@@ -74,15 +74,15 @@ export const QuizInfoPage = () => {
             </p>
           </div>
 
-          {/* Card 2: Mekanisme Timer & Lock */}
+          {/* Card 2: Timer Total 10 Menit */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 custom-shadow flex flex-col items-center text-center">
             <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-3xl">lock_clock</span>
+              <span className="material-symbols-outlined text-3xl">timer</span>
             </div>
-            <h3 className="font-bold text-lg text-gray-900 mb-1">Timer & Lock</h3>
-            <p className="text-2xl font-extrabold text-amber-600 mb-2">30 Detik / Soal</p>
+            <h3 className="font-bold text-lg text-gray-900 mb-1">Timer Kuis Total</h3>
+            <p className="text-2xl font-extrabold text-amber-600 mb-2">10 Menit Total</p>
             <p className="text-xs text-gray-500">
-              Soal akan otomatis terkunci (Lock) saat waktu habis. Pilihan tidak dapat diubah setelah terkunci.
+              Waktu 10 menit dihitung untuk seluruh 15 soal. Anda dapat mengatur waktu pengerjaan setiap soal secara mandiri.
             </p>
           </div>
 
@@ -129,67 +129,37 @@ export const QuizInfoPage = () => {
 
           <hr className="border-gray-200" />
 
-          {/* Lock & Unlock Mechanism & Grid Colors */}
+          {/* Answered Mark & Nav Status */}
           <div>
             <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-red-600">lock</span>
-              Mekanisme Lock / Unlock Soal & Status Navigasi
+              <span className="material-symbols-outlined text-emerald-600">check_circle</span>
+              Tanda (Mark) Soal Terjawab & Navigasi
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm mb-4">
               <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-lg">check_circle</span>
+                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center shrink-0">
+                  ✓
                 </div>
                 <div>
                   <span className="font-bold text-emerald-900 text-sm block mb-1">
-                    🟩 Indikator Hijau (Terjawab)
+                    🟩 Indikator Centang (✓ Sudah Dijawab)
                   </span>
                   <span className="text-emerald-800 text-xs leading-relaxed">
-                    Menandakan soal tersebut <strong>sudah Anda beri jawaban</strong>.
+                    Setiap soal yang telah Anda jawab akan memiliki <strong>badge centang (✓)</strong> dan latar warna hijau pada grid nomor soal.
                   </span>
                 </div>
               </div>
 
               <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
                 <div className="w-8 h-8 rounded-lg bg-red-500 text-white font-bold flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-lg">cancel</span>
+                  !
                 </div>
                 <div>
                   <span className="font-bold text-red-900 text-sm block mb-1">
-                    🟥 Indikator Merah (Belum Terjawab)
+                    🟥 Indikator Merah (Belum Dijawab)
                   </span>
                   <span className="text-red-800 text-xs leading-relaxed">
-                    Menandakan soal tersebut <strong>belum dijawab</strong> atau <strong>kehabisan waktu</strong>.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gray-700 text-white font-bold flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-lg">lock</span>
-                </div>
-                <div>
-                  <span className="font-bold text-gray-900 text-sm block mb-1">
-                    🔒 Ikon Lock (Terkunci)
-                  </span>
-                  <span className="text-gray-600 text-xs leading-relaxed">
-                    Soal yang waktu timer (30 detik) nya telah habis akan <strong>terkunci (Lock)</strong>. Pilihan pada soal terkunci tidak dapat diubah lagi.
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-lg">lock_open</span>
-                </div>
-                <div>
-                  <span className="font-bold text-gray-900 text-sm block mb-1">
-                    🔓 Ikon Unlock (Terbuka)
-                  </span>
-                  <span className="text-gray-600 text-xs leading-relaxed">
-                    Soal masih <strong>aktif & terbuka (Unlock)</strong>. Anda dapat memilih atau mengubah jawaban selama timer belum habis.
+                    Menandakan soal tersebut <strong>belum memiliki jawaban terpilih</strong>.
                   </span>
                 </div>
               </div>
@@ -202,14 +172,14 @@ export const QuizInfoPage = () => {
           <div>
             <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
               <span className="material-symbols-outlined text-amber-500">speed</span>
-              Penjelasan Indikator Warna Waktu (Timer Bar)
+              Penjelasan Indikator Waktu (Timer Total 10 Menit)
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3">
                 <div className="w-4 h-4 rounded-full bg-emerald-500 shrink-0" />
                 <div>
                   <span className="font-bold text-emerald-800 block">Warna Hijau (0% - 25% terpakai)</span>
-                  <span className="text-emerald-700 text-[11px]">Sisa waktu masih banyak (&gt;22.5s)</span>
+                  <span className="text-emerald-700 text-[11px]">Sisa waktu masih banyak (&gt;7.5 menit)</span>
                 </div>
               </div>
 
@@ -217,7 +187,7 @@ export const QuizInfoPage = () => {
                 <div className="w-4 h-4 rounded-full bg-amber-500 shrink-0" />
                 <div>
                   <span className="font-bold text-amber-800 block">Warna Kuning (25% - 75% terpakai)</span>
-                  <span className="text-amber-700 text-[11px]">Waktu tersisa setengah (7.5s - 22.5s)</span>
+                  <span className="text-amber-700 text-[11px]">Sisa waktu pertengahan (2.5 - 7.5 menit)</span>
                 </div>
               </div>
 
@@ -225,7 +195,7 @@ export const QuizInfoPage = () => {
                 <div className="w-4 h-4 rounded-full bg-red-500 shrink-0" />
                 <div>
                   <span className="font-bold text-red-800 block">Warna Merah (&gt;75% terpakai)</span>
-                  <span className="text-red-700 text-[11px]">Waktu kritis (&lt;7.5s) & berkedip</span>
+                  <span className="text-red-700 text-[11px]">Waktu kritis (&lt;2.5 menit) & berkedip</span>
                 </div>
               </div>
             </div>
@@ -241,13 +211,13 @@ export const QuizInfoPage = () => {
             </h2>
             <ul className="list-disc list-inside space-y-2 text-xs md:text-sm text-gray-700">
               <li>
-                <strong>Tanpa Tombol Selanjutnya/Sebelumnya</strong>: Pindah antar soal dilakukan langsung dengan mengeklik <strong>Nomor Soal pada Grid Navigasi</strong>.
+                <strong>Navigasi Bebas</strong>: Anda dapat berpindah dan memilih soal kapan saja dengan mengeklik <strong>Nomor Soal pada Grid Navigasi</strong> atau tombol <strong>Selanjutnya</strong>.
+              </li>
+              <li>
+                <strong>Pengumpulan Otomatis</strong>: Jika sisa waktu total (10 menit) habis, kuis akan otomatis dikumpulkan dan hasil evaluasi langsung ditampilkan.
               </li>
               <li>
                 Saat mengeklik <strong>Mulai Tes Sekarang</strong>, layar browser akan masuk ke mode <strong>Fullscreen</strong> secara otomatis.
-              </li>
-              <li>
-                Jika Anda keluar dari mode Fullscreen sebelum kuis selesai, sistem akan menampilkan dialog peringatan untuk mengaktifkan kembali mode Fullscreen.
               </li>
             </ul>
           </div>
@@ -258,7 +228,7 @@ export const QuizInfoPage = () => {
           <div>
             <h3 className="font-bold text-lg md:text-xl">Sudah Siap Memulai Test?</h3>
             <p className="text-xs md:text-sm text-blue-200">
-              Pastikan koneksi internet Anda stabil dan Anda siap fokus mengerjakan 15 soal.
+              Anda memiliki waktu total 10 menit untuk mengerjakan 15 soal.
             </p>
           </div>
           <Button

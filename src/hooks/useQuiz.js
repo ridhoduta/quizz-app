@@ -6,22 +6,20 @@ import { getRecommendation } from '../utils/recommendation';
 export const QUIZ_ANSWERS_KEY = 'quizAnswers';
 export const QUIZ_PROGRESS_KEY = 'quizProgress';
 export const QUIZ_RESULT_KEY = 'quizResult';
-export const QUIZ_LOCKED_KEY = 'quizLocked';
 
 /**
- * Custom hook to manage placement test state, navigation, persistence, lock/unlock questions, and submit processing
+ * Custom hook to manage placement test state, navigation, persistence, and submit processing
  * @param {Array} questions List of questions (defaults to questions.json)
  */
 export const useQuiz = (questions = questionsData) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [lockedQuestions, setLockedQuestions] = useState({});
   const [quizResult, setQuizResult] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const totalQuestions = questions.length;
 
-  // Restore quiz answers, locked status, and saved result from localStorage on mount
+  // Restore quiz answers and saved result from localStorage on mount
   useEffect(() => {
     try {
       const savedAnswers = localStorage.getItem(QUIZ_ANSWERS_KEY);
@@ -29,14 +27,6 @@ export const useQuiz = (questions = questionsData) => {
         const parsed = JSON.parse(savedAnswers);
         if (parsed && typeof parsed === 'object') {
           setAnswers(parsed);
-        }
-      }
-
-      const savedLocked = localStorage.getItem(QUIZ_LOCKED_KEY);
-      if (savedLocked) {
-        const parsedLocked = JSON.parse(savedLocked);
-        if (parsedLocked && typeof parsedLocked === 'object') {
-          setLockedQuestions(parsedLocked);
         }
       }
 
@@ -68,31 +58,9 @@ export const useQuiz = (questions = questionsData) => {
     return questions[currentIndex] || null;
   }, [questions, currentIndex]);
 
-  // Lock a question when its timer runs out or it is locked
-  const lockQuestion = useCallback((questionId) => {
-    setLockedQuestions((prev) => {
-      if (prev[questionId]) return prev;
-      const updated = {
-        ...prev,
-        [questionId]: true,
-      };
-      try {
-        localStorage.setItem(QUIZ_LOCKED_KEY, JSON.stringify(updated));
-      } catch (err) {
-        console.error('Failed to save locked questions to localStorage:', err);
-      }
-      return updated;
-    });
-  }, []);
-
-  // Select/update answer for a specific question (only if not locked)
+  // Select/update answer for a specific question
   const selectAnswer = useCallback(
     (questionId, optionIndex) => {
-      // Prevent selection if question is locked
-      if (lockedQuestions[questionId]) {
-        return;
-      }
-
       setAnswers((prev) => {
         const updated = {
           ...prev,
@@ -114,7 +82,7 @@ export const useQuiz = (questions = questionsData) => {
         return updated;
       });
     },
-    [lockedQuestions, totalQuestions]
+    [totalQuestions]
   );
 
   // Navigation handlers
@@ -148,7 +116,6 @@ export const useQuiz = (questions = questionsData) => {
       level,
       recommendation,
       answers,
-      lockedQuestions,
       completedAt: new Date().toISOString(),
     };
 
@@ -160,19 +127,18 @@ export const useQuiz = (questions = questionsData) => {
     }
 
     return resultPayload;
-  }, [answers, questions, totalQuestions, lockedQuestions]);
+  }, [answers, questions, totalQuestions]);
 
   // Reset quiz progress and clear localStorage
   const resetQuiz = useCallback(() => {
     setAnswers({});
-    setLockedQuestions({});
     setCurrentIndex(0);
     setQuizResult(null);
     try {
       localStorage.removeItem(QUIZ_ANSWERS_KEY);
       localStorage.removeItem(QUIZ_PROGRESS_KEY);
       localStorage.removeItem(QUIZ_RESULT_KEY);
-      localStorage.removeItem(QUIZ_LOCKED_KEY);
+      localStorage.removeItem('quizTimeLeft');
     } catch (err) {
       console.error('Failed to clear quiz localStorage:', err);
     }
@@ -184,12 +150,10 @@ export const useQuiz = (questions = questionsData) => {
     currentQuestion,
     totalQuestions,
     answers,
-    lockedQuestions,
     progress,
     quizResult,
     isLoaded,
     selectAnswer,
-    lockQuestion,
     nextQuestion,
     previousQuestion,
     goToQuestion,
