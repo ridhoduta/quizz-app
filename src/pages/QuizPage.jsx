@@ -110,14 +110,20 @@ export const QuizPage = () => {
               <button
                 type="button"
                 onClick={enterFullscreen}
-                className="flex items-center gap-1 text-xs text-amber-700 bg-amber-50 border border-amber-300 px-2.5 py-1 rounded-lg hover:bg-amber-100 transition-colors font-bold cursor-pointer"
+                className="flex items-center gap-1 text-xs text-amber-800 bg-amber-50 border border-amber-300 px-2.5 py-1.5 rounded-lg hover:bg-amber-100 transition-colors font-medium cursor-pointer"
               >
                 <span className="material-symbols-outlined text-sm">fullscreen</span>
-                <span className="hidden sm:inline">Fullscreen</span>
+                <span className="hidden sm:inline">Masuk Fullscreen</span>
               </button>
             )}
-            <Button variant="accent" size="sm" onClick={() => setIsModalOpen(true)} icon="check_circle">
-              <span className="hidden sm:inline">Kumpulkan</span>
+            <Button
+              variant="accent"
+              size="sm"
+              onClick={() => setIsModalOpen(true)}
+              icon="assignment_turned_in"
+            >
+              <span className="hidden sm:inline">Kumpulkan Jawaban</span>
+              <span className="sm:hidden">Kumpulkan</span>
             </Button>
           </div>
         </div>
@@ -145,10 +151,15 @@ export const QuizPage = () => {
 
           {/* Overall 10-Minute Timer Card */}
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 transition-all duration-300">
-            <div className="flex items-center gap-2 self-start border-b border-gray-100 pb-2 w-full">
-              <span className="material-symbols-outlined text-[#22437C] text-base">timer</span>
-              <span className="text-xs font-bold text-[#012C64] uppercase tracking-wide">
-                Sisa Waktu Kuis (Total 10m)
+            <div className="flex flex-col border-b border-gray-100 pb-2 w-full">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[#22437C] text-base">timer</span>
+                <span className="text-xs font-bold text-[#012C64] uppercase tracking-wide">
+                  Sisa Waktu
+                </span>
+              </div>
+              <span className="text-[11px] text-gray-500 mt-0.5">
+                10 menit untuk seluruh 15 soal
               </span>
             </div>
 
@@ -176,16 +187,16 @@ export const QuizPage = () => {
         </div>
       </div>
 
-      {/* ── Fullscreen Warning Overlay ── */}
+      {/* ── Fullscreen Blocking Modal Overlay ── */}
       {!isFullscreen && (
         <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full text-center shadow-2xl flex flex-col items-center">
             <div className="w-14 h-14 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
               <span className="material-symbols-outlined text-4xl">fullscreen</span>
             </div>
-            <h2 className="text-lg font-extrabold text-gray-900 mb-2">Mode Fullscreen Diperlukan</h2>
-            <p className="text-sm text-gray-500 mb-5 leading-relaxed">
-              Kuis harus dilakukan dalam mode layar penuh untuk menjaga fokus dan keamanan pengerjaan.
+            <h2 className="text-lg font-bold text-gray-900 mb-2">Mode Fullscreen Diperlukan</h2>
+            <p className="text-sm text-gray-600 mb-5 leading-relaxed">
+              Kuis harus dilakukan dalam mode layar penuh untuk menjaga fokus pengerjaan tes. Silakan masuk kembali ke mode fullscreen.
             </p>
             <Button variant="primary" size="lg" fullWidth onClick={enterFullscreen} icon="fullscreen">
               Masuk Fullscreen

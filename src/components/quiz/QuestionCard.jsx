@@ -34,14 +34,14 @@ export const QuestionCard = ({
         <div>
           {/* Mark / Badge if user has answered */}
           {isAnswered ? (
-            <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
-              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>check_circle</span>
-              Sudah Dijawab ({selectedLetter})
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300">
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-600 text-white font-bold text-[9px] flex items-center justify-center shrink-0">✓</span>
+              <span>Sudah Dijawab ({selectedLetter})</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300">
-              <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>help</span>
-              Belum Dijawab
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-red-50 text-red-800 border border-red-300">
+              <span className="w-3.5 h-3.5 rounded-full bg-red-500 text-white font-bold text-[9px] flex items-center justify-center shrink-0">!</span>
+              <span>Belum Dijawab</span>
             </span>
           )}
         </div>

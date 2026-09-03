@@ -52,10 +52,10 @@ export const ResultPage = () => {
         <section className="flex flex-col gap-6">
           <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-2">
             <span className="text-[#A9213F] font-bold text-xs uppercase tracking-wider">
-              PLACEMENT TEST RESULT
+              Hasil Evaluasi
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#012C64]">
-              HASIL TEST
+            <h1 className="text-2xl md:text-4xl font-bold text-[#012C64]">
+              Hasil Placement Test
             </h1>
             <p className="text-sm md:text-base text-[#434750] leading-relaxed">
               Berikut adalah evaluasi skor akhir, tingkat kemampuan, dan ringkasan pencapaian Anda.
@@ -66,13 +66,12 @@ export const ResultPage = () => {
           <ResultCard quizResult={quizResult} />
         </section>
 
-
         {/* ── 3. REKOMENDASI PROGRAM SECTION ── */}
         {quizResult?.recommendation && (
           <section className="flex flex-col gap-4">
             <div className="text-center md:text-left">
-              <h2 className="text-xl md:text-2xl font-extrabold text-[#012C64]">
-                REKOMENDASI PROGRAM
+              <h2 className="text-xl md:text-2xl font-bold text-[#012C64]">
+                Rekomendasi Program
               </h2>
               <p className="text-xs md:text-sm text-[#434750] mt-1">
                 Program belajar yang disesuaikan khusus dengan skor dan tingkat kemampuan Anda.
@@ -90,16 +89,12 @@ export const ResultPage = () => {
             onRetakeTest={handleRetakeTest}
           />
         </section>
-       
-        
 
-
-        
         {/* ── 5. REVIEW SOAL & JAWABAN SECTION ── */}
         <section className="flex flex-col gap-4">
           <div className="text-center md:text-left">
-            <h2 className="text-xl md:text-2xl font-extrabold text-[#012C64]">
-              REVIEW SOAL & JAWABAN
+            <h2 className="text-xl md:text-2xl font-bold text-[#012C64]">
+              Review Soal & Jawaban
             </h2>
             <p className="text-xs md:text-sm text-[#434750] mt-1">
               Evaluasi jawaban Anda untuk setiap nomor soal beserta kunci jawaban yang benar.

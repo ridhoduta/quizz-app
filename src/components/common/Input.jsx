@@ -17,9 +17,11 @@ export const Input = ({
   ...props
 }) => {
   const isSelect = type === 'select';
+  const inputId = id || name;
+  const errorId = error && inputId ? `${inputId}-error` : undefined;
 
   const baseInputStyle =
-    'w-full bg-[#F9FAFB] border rounded px-4 py-3 text-base text-[#151C27] placeholder:text-[#C4C6D1] focus:outline-none transition-colors duration-150';
+    'w-full bg-[#F9FAFB] border rounded-lg px-4 py-3 text-base text-[#151C27] placeholder:text-[#C4C6D1] focus:outline-none transition-colors duration-150';
   
   const borderStyle = error
     ? 'border-[#A9213F] focus:border-[#A9213F] focus:ring-1 focus:ring-[#A9213F]'
@@ -29,22 +31,24 @@ export const Input = ({
     <div className={`w-full ${className}`}>
       {label && (
         <label
-          htmlFor={id || name}
+          htmlFor={inputId}
           className="block text-sm font-medium text-[#151C27] mb-1.5"
         >
           {label}
-          {required && <span className="text-[#A9213F] ml-1">*</span>}
+          {required && <span className="text-[#A9213F] ml-1" aria-hidden="true">*</span>}
         </label>
       )}
 
       {isSelect ? (
         <div className="relative">
           <select
-            id={id || name}
+            id={inputId}
             name={name}
             value={value}
             onChange={onChange}
             disabled={disabled}
+            aria-invalid={Boolean(error)}
+            aria-describedby={errorId}
             className={`${baseInputStyle} ${borderStyle} appearance-none pr-10 cursor-pointer`}
             {...props}
           >
@@ -65,20 +69,22 @@ export const Input = ({
         </div>
       ) : (
         <input
-          id={id || name}
+          id={inputId}
           name={name}
           type={type}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           disabled={disabled}
+          aria-invalid={Boolean(error)}
+          aria-describedby={errorId}
           className={`${baseInputStyle} ${borderStyle}`}
           {...props}
         />
       )}
 
       {error && (
-        <p className="mt-1.5 text-xs text-[#A9213F] flex items-center gap-1">
+        <p id={errorId} className="mt-1.5 text-xs text-[#A9213F] flex items-center gap-1" role="alert">
           <span className="material-symbols-outlined text-[16px]">error</span>
           <span>{error}</span>
         </p>

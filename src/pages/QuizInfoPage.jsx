@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useBiodata from '../hooks/useBiodata';
 import Button from '../components/common/Button';
@@ -6,8 +7,14 @@ import Loading from '../components/common/Loading';
 export const QuizInfoPage = () => {
   const navigate = useNavigate();
   const { biodata, isLoaded } = useBiodata();
+  const [showFullscreenModal, setShowFullscreenModal] = useState(false);
 
   const handleStartQuiz = () => {
+    setShowFullscreenModal(true);
+  };
+
+  const confirmStartQuiz = () => {
+    setShowFullscreenModal(false);
     // Request browser Fullscreen mode
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch((err) => {
@@ -37,7 +44,7 @@ export const QuizInfoPage = () => {
 
           {/* Step Indicator */}
           <div className="flex items-center gap-2 text-[#434750] text-xs md:text-sm font-medium">
-            <span>Step 2 of 2 (Informasi)</span>
+            <span>Langkah 2 dari 2</span>
             <div className="w-16 h-2 bg-[#DCE2F3] rounded-full overflow-hidden">
               <div className="w-full h-full bg-[#22437C] rounded-full" />
             </div>
@@ -49,79 +56,66 @@ export const QuizInfoPage = () => {
       <main className="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 w-full">
         {/* Banner Section */}
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="inline-block bg-[#E0E7FF] text-[#1E40AF] font-bold text-xs px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-            Petunjuk & Informasi Kuis
+          <span className="inline-block bg-[#F0F3FF] text-[#22437C] font-semibold text-xs px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
+            INFORMASI PENGERJAAN
           </span>
-          <h1 className="text-2xl md:text-4xl font-extrabold text-[#012C64] mb-3">
-            Selamat Datang, {biodata.name || 'Peserta'}!
+          <h1 className="text-2xl md:text-3xl font-bold text-[#012C64] mb-2">
+            Petunjuk Placement Test
           </h1>
           <p className="text-sm md:text-base text-[#434750] leading-relaxed">
-            Mohon pelajari informasi dan ketentuan pelaksanaan placement test di bawah ini sebelum Anda memulai kuis.
+            Halo, <strong className="text-[#151C27]">{biodata.name || 'Peserta'}</strong>! Pelajari informasi dan ketentuan berikut sebelum memulai tes.
           </p>
         </div>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* Card 1: Jumlah Soal */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 custom-shadow flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-blue-50 text-[#22437C] flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-3xl">quiz</span>
+        {/* Unified Info Highlight Bar */}
+        <div className="bg-white border border-[#C4C6D1] rounded-2xl p-5 md:p-6 custom-shadow mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
+            {/* 1: Jumlah Soal */}
+            <div className="flex flex-col items-center text-center p-3 sm:py-0">
+              <span className="text-xs font-medium text-gray-500 mb-1">Jumlah Soal</span>
+              <span className="text-2xl font-bold text-[#22437C]">15 Soal</span>
+              <span className="text-xs text-gray-400 mt-1">Pilihan ganda</span>
             </div>
-            <h3 className="font-bold text-lg text-gray-900 mb-1">Jumlah Soal</h3>
-            <p className="text-2xl font-extrabold text-[#22437C] mb-2">15 Soal</p>
-            <p className="text-xs text-gray-500">
-              Pertanyaan pilihan ganda seputar grammar, vocabulary, dan pemahaman bahasa Inggris.
-            </p>
-          </div>
 
-          {/* Card 2: Timer Total 10 Menit */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 custom-shadow flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-3xl">timer</span>
+            {/* 2: Waktu Pengerjaan */}
+            <div className="flex flex-col items-center text-center p-3 sm:py-0">
+              <span className="text-xs font-medium text-gray-500 mb-1">Waktu Pengerjaan</span>
+              <span className="text-2xl font-bold text-[#A9213F]">10 Menit</span>
+              <span className="text-xs text-gray-400 mt-1">Total seluruh soal</span>
             </div>
-            <h3 className="font-bold text-lg text-gray-900 mb-1">Timer Kuis Total</h3>
-            <p className="text-2xl font-extrabold text-amber-600 mb-2">10 Menit Total</p>
-            <p className="text-xs text-gray-500">
-              Waktu 10 menit dihitung untuk seluruh 15 soal. Anda dapat mengatur waktu pengerjaan setiap soal secara mandiri.
-            </p>
-          </div>
 
-          {/* Card 3: Hasil & Evaluasi */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 custom-shadow flex flex-col items-center text-center">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-3xl">analytics</span>
+            {/* 3: Laporan Hasil */}
+            <div className="flex flex-col items-center text-center p-3 sm:py-0">
+              <span className="text-xs font-medium text-gray-500 mb-1">Hasil & Evaluasi</span>
+              <span className="text-2xl font-bold text-emerald-600">Instan</span>
+              <span className="text-xs text-gray-400 mt-1">Level & rekomendasi kelas</span>
             </div>
-            <h3 className="font-bold text-lg text-gray-900 mb-1">Laporan Hasil</h3>
-            <p className="text-2xl font-extrabold text-emerald-600 mb-2">Lengkap & Detail</p>
-            <p className="text-xs text-gray-500">
-              Hasil mencakup skor total, tingkat level, rekomendasi kelas, serta review kunci jawaban.
-            </p>
           </div>
         </div>
 
-        {/* Detailed Sections: Biodata Confirmation & Rules */}
+        {/* Detailed Sections Container */}
         <div className="bg-white border border-[#C4C6D1] rounded-2xl p-6 md:p-8 custom-shadow space-y-6 mb-8">
           {/* Biodata Summary */}
           <div>
-            <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-blue-600">person</span>
-              Biodata Peserta Tes
+            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#22437C] text-[20px]">person</span>
+              <span>Biodata Peserta</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs md:text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-[#F9FAFB] p-4 rounded-xl border border-gray-200 text-xs md:text-sm">
               <div>
-                <span className="block text-gray-500 text-[11px]">Nama Lengkap</span>
+                <span className="block text-gray-500 text-[11px] mb-0.5">Nama Lengkap</span>
                 <span className="font-semibold text-gray-900">{biodata.name || '-'}</span>
               </div>
               <div>
-                <span className="block text-gray-500 text-[11px]">Email</span>
+                <span className="block text-gray-500 text-[11px] mb-0.5">Email</span>
                 <span className="font-semibold text-gray-900">{biodata.email || '-'}</span>
               </div>
               <div>
-                <span className="block text-gray-500 text-[11px]">No. WhatsApp</span>
+                <span className="block text-gray-500 text-[11px] mb-0.5">Nomor WhatsApp</span>
                 <span className="font-semibold text-gray-900">{biodata.whatsapp || '-'}</span>
               </div>
               <div>
-                <span className="block text-gray-500 text-[11px]">Target Program</span>
+                <span className="block text-gray-500 text-[11px] mb-0.5">Pilihan Program</span>
                 <span className="font-semibold text-[#22437C]">{biodata.targetProgram || '-'}</span>
               </div>
             </div>
@@ -129,106 +123,80 @@ export const QuizInfoPage = () => {
 
           <hr className="border-gray-200" />
 
-          {/* Answered Mark & Nav Status */}
+          {/* Ketentuan Pengerjaan (Scannable list) */}
           <div>
-            <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-emerald-600">check_circle</span>
-              Tanda (Mark) Soal Terjawab & Navigasi
+            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#22437C] text-[20px]">rule</span>
+              <span>Ketentuan Pengerjaan</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm mb-4">
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center shrink-0">
-                  ✓
-                </div>
-                <div>
-                  <span className="font-bold text-emerald-900 text-sm block mb-1">
-                    🟩 Indikator Centang (✓ Sudah Dijawab)
-                  </span>
-                  <span className="text-emerald-800 text-xs leading-relaxed">
-                    Setiap soal yang telah Anda jawab akan memiliki <strong>badge centang (✓)</strong> dan latar warna hijau pada grid nomor soal.
-                  </span>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm text-[#434750]">
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                <span className="material-symbols-outlined text-emerald-600 text-base shrink-0 mt-0.5">check_circle</span>
+                <span><strong>10 menit untuk seluruh 15 soal.</strong> Atur ritme pengerjaan Anda secara mandiri.</span>
               </div>
-
-              <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-red-500 text-white font-bold flex items-center justify-center shrink-0">
-                  !
-                </div>
-                <div>
-                  <span className="font-bold text-red-900 text-sm block mb-1">
-                    🟥 Indikator Merah (Belum Dijawab)
-                  </span>
-                  <span className="text-red-800 text-xs leading-relaxed">
-                    Menandakan soal tersebut <strong>belum memiliki jawaban terpilih</strong>.
-                  </span>
-                </div>
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                <span className="material-symbols-outlined text-emerald-600 text-base shrink-0 mt-0.5">check_circle</span>
+                <span><strong>Navigasi bebas.</strong> Anda dapat berpindah dan meninjau nomor soal kapan saja.</span>
+              </div>
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                <span className="material-symbols-outlined text-emerald-600 text-base shrink-0 mt-0.5">check_circle</span>
+                <span><strong>Submit otomatis.</strong> Jawaban akan otomatis dikumpulkan ketika waktu habis.</span>
+              </div>
+              <div className="flex items-start gap-2.5 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                <span className="material-symbols-outlined text-emerald-600 text-base shrink-0 mt-0.5">check_circle</span>
+                <span><strong>Mode fullscreen.</strong> Tes dianjurkan dalam layar penuh untuk menjaga fokus pengerjaan.</span>
               </div>
             </div>
           </div>
 
           <hr className="border-gray-200" />
 
-          {/* Color Bar Timer Explanation */}
+          {/* Status Navigasi & Timer Indicators */}
           <div>
-            <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-amber-500">speed</span>
-              Penjelasan Indikator Waktu (Timer Total 10 Menit)
+            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#22437C] text-[20px]">info</span>
+              <span>Petunjuk Status Soal & Timer</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3">
-                <div className="w-4 h-4 rounded-full bg-emerald-500 shrink-0" />
-                <div>
-                  <span className="font-bold text-emerald-800 block">Warna Hijau (0% - 25% terpakai)</span>
-                  <span className="text-emerald-700 text-[11px]">Sisa waktu masih banyak (&gt;7.5 menit)</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              {/* Soal Status */}
+              <div className="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
+                <span className="font-bold text-gray-700 block">Indikator Nomor Soal</span>
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-emerald-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0">✓</span>
+                  <span className="text-gray-600"><strong>Sudah Dijawab:</strong> warna hijau dengan tanda centang</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-red-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">!</span>
+                  <span className="text-gray-600"><strong>Belum Dijawab:</strong> warna merah dengan tanda seru</span>
                 </div>
               </div>
 
-              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-3">
-                <div className="w-4 h-4 rounded-full bg-amber-500 shrink-0" />
-                <div>
-                  <span className="font-bold text-amber-800 block">Warna Kuning (25% - 75% terpakai)</span>
-                  <span className="text-amber-700 text-[11px]">Sisa waktu pertengahan (2.5 - 7.5 menit)</span>
+              {/* Timer Status */}
+              <div className="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
+                <span className="font-bold text-gray-700 block">Indikator Waktu</span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span className="text-gray-600"><strong>Hijau:</strong> Waktu masih cukup (&gt; 7.5 menit)</span>
                 </div>
-              </div>
-
-              <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3">
-                <div className="w-4 h-4 rounded-full bg-red-500 shrink-0" />
-                <div>
-                  <span className="font-bold text-red-800 block">Warna Merah (&gt;75% terpakai)</span>
-                  <span className="text-red-700 text-[11px]">Waktu kritis (&lt;2.5 menit) & berkedip</span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
+                  <span className="text-gray-600"><strong>Kuning:</strong> Perhatikan waktu (2.5 – 7.5 menit)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0" />
+                  <span className="text-gray-600"><strong>Merah:</strong> Waktu kritis (&lt; 2.5 menit)</span>
                 </div>
               </div>
             </div>
-          </div>
-
-          <hr className="border-gray-200" />
-
-          {/* Rules and Mode */}
-          <div>
-            <h2 className="text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-purple-600">fullscreen</span>
-              Ketentuan Navigasi & Mode Fullscreen
-            </h2>
-            <ul className="list-disc list-inside space-y-2 text-xs md:text-sm text-gray-700">
-              <li>
-                <strong>Navigasi Bebas</strong>: Anda dapat berpindah dan memilih soal kapan saja dengan mengeklik <strong>Nomor Soal pada Grid Navigasi</strong> atau tombol <strong>Selanjutnya</strong>.
-              </li>
-              <li>
-                <strong>Pengumpulan Otomatis</strong>: Jika sisa waktu total (10 menit) habis, kuis akan otomatis dikumpulkan dan hasil evaluasi langsung ditampilkan.
-              </li>
-              <li>
-                Saat mengeklik <strong>Mulai Tes Sekarang</strong>, layar browser akan masuk ke mode <strong>Fullscreen</strong> secara otomatis.
-              </li>
-            </ul>
           </div>
         </div>
 
-        {/* Action Button */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-blue-900 text-white p-6 rounded-2xl shadow-lg">
+        {/* Action Callout */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-[#22437C] text-white p-6 rounded-2xl shadow-lg">
           <div>
-            <h3 className="font-bold text-lg md:text-xl">Sudah Siap Memulai Test?</h3>
-            <p className="text-xs md:text-sm text-blue-200">
-              Anda memiliki waktu total 10 menit untuk mengerjakan 15 soal.
+            <h3 className="font-bold text-lg md:text-xl">Sudah Siap Memulai Tes?</h3>
+            <p className="text-xs md:text-sm text-blue-100 mt-0.5">
+              10 menit untuk seluruh 15 soal. Tes akan dimulai dalam mode layar penuh.
             </p>
           </div>
           <Button
@@ -239,9 +207,55 @@ export const QuizInfoPage = () => {
             iconPosition="right"
             className="w-full sm:w-auto shrink-0 shadow-md text-base"
           >
-            Mulai Tes Sekarang (Fullscreen)
+            Mulai Tes
           </Button>
         </div>
+
+        {/* Fullscreen Alert Confirmation Modal */}
+        {showFullscreenModal && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-fade-in"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="fullscreen-modal-title"
+            aria-describedby="fullscreen-modal-description"
+          >
+            <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-8 border border-[#C4C6D1] flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-[#E2E8F8] rounded-full flex items-center justify-center mb-4 text-[#22437C]">
+                <span className="material-symbols-outlined text-[36px]">
+                  fullscreen
+                </span>
+              </div>
+
+              <h3 id="fullscreen-modal-title" className="text-xl md:text-2xl font-bold text-[#151C27] mb-2">
+                Masuk Mode Fullscreen
+              </h3>
+
+              <p id="fullscreen-modal-description" className="text-sm text-[#434750] mb-6 leading-relaxed">
+                Tes akan dimulai dalam <strong>mode layar penuh (fullscreen)</strong> untuk menjaga fokus pengerjaan. Pastikan Anda siap sebelum memulai kuis.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 w-full">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowFullscreenModal(false)}
+                  className="flex-1"
+                >
+                  Batal
+                </Button>
+                <Button
+                  variant="accent"
+                  onClick={confirmStartQuiz}
+                  icon="play_arrow"
+                  iconPosition="right"
+                  className="flex-1"
+                >
+                  Mulai Tes Sekarang
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Footer */}

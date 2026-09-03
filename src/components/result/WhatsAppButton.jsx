@@ -47,7 +47,7 @@ export const WhatsAppButton = ({
             iconPosition="left"
             size="lg"
           >
-            Ulangi Test
+            Ulangi Tes
           </Button>
         )}
       </div>

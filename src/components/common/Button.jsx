@@ -15,22 +15,22 @@ export const Button = ({
   fullWidth = false,
   ...props
 }) => {
-  // Base classes
+  // Base classes — focus-visible ring for keyboard navigation (WCAG 2.2 AA)
   const baseClasses =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 cursor-pointer';
+    'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
 
   // Variant classes matching reference html design
   const variantClasses = {
     primary:
-      'bg-[#22437C] hover:bg-[#1A3462] text-white shadow-sm hover:shadow-md',
+      'bg-[#22437C] hover:bg-[#1A3462] text-white shadow-sm hover:shadow-md focus-visible:ring-[#22437C]',
     secondary:
-      'bg-transparent border border-[#22437C] text-[#22437C] hover:bg-[#F0F3FF]',
+      'bg-transparent border border-[#22437C] text-[#22437C] hover:bg-[#F0F3FF] focus-visible:ring-[#22437C]',
     accent:
-      'bg-[#A9213F] hover:bg-[#8F1A33] text-white shadow-sm hover:shadow-md',
+      'bg-[#A9213F] hover:bg-[#8F1A33] text-white shadow-sm hover:shadow-md focus-visible:ring-[#A9213F]',
     outline:
-      'border border-[#C4C6D1] bg-white text-[#151C27] hover:bg-[#F9F9FF]',
+      'border border-[#C4C6D1] bg-white text-[#151C27] hover:bg-[#F9F9FF] focus-visible:ring-[#22437C]',
     ghost:
-      'bg-transparent text-[#434750] hover:text-[#22437C] hover:bg-[#F0F3FF]',
+      'bg-transparent text-[#434750] hover:text-[#22437C] hover:bg-[#F0F3FF] focus-visible:ring-[#22437C]',
   };
 
   // Size classes
@@ -47,6 +47,7 @@ export const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled || isLoading}
+      aria-busy={isLoading || undefined}
       className={`${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${
         sizeClasses[size] || sizeClasses.md
       } ${widthClass} ${className}`}

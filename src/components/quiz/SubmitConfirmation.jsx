@@ -13,7 +13,13 @@ export const SubmitConfirmation = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 animate-fade-in"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-submit-title"
+      aria-describedby="modal-submit-description"
+    >
       <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-8 border border-[#C4C6D1] flex flex-col items-center text-center transform transition-all scale-100">
         {/* Header Icon */}
         <div className="w-16 h-16 bg-[#E2E8F8] rounded-full flex items-center justify-center mb-4 text-[#22437C]">
@@ -23,13 +29,13 @@ export const SubmitConfirmation = ({
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-bold text-[#151C27] mb-2">
-          Kumpulkan Placement Test?
+        <h3 id="modal-submit-title" className="text-xl md:text-2xl font-bold text-[#151C27] mb-2">
+          Kumpulkan Jawaban?
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-[#434750] mb-6 leading-relaxed">
-          Apakah Anda yakin ingin mengumpulkan hasil test Anda? Jawaban Anda akan langsung dihitung untuk menentukan rekomendasi program.
+        <p id="modal-submit-description" className="text-sm text-[#434750] mb-6 leading-relaxed">
+          Setelah dikumpulkan, Anda tidak dapat mengubah jawaban lagi. Hasil evaluasi dan rekomendasi level akan langsung ditampilkan.
         </p>
 
         {/* Unanswered Warning Banner */}
@@ -58,7 +64,7 @@ export const SubmitConfirmation = ({
             onClick={onConfirm}
             className="flex-1"
           >
-            Kumpulkan Test
+            Kumpulkan Jawaban
           </Button>
         </div>
       </div>

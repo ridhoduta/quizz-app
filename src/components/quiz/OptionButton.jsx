@@ -13,7 +13,8 @@ export const OptionButton = ({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`w-full flex items-center p-4 rounded-xl border text-left transition-all duration-200 select-none group ${
+      aria-pressed={isSelected}
+      className={`w-full min-h-[52px] flex items-center p-4 rounded-xl border text-left transition-all duration-200 select-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22437C] ${
         disabled ? 'cursor-not-allowed opacity-75' : 'cursor-pointer'
       } ${
         isSelected
@@ -43,7 +44,7 @@ export const OptionButton = ({
 
       {/* Checkmark Icon when Selected */}
       {isSelected && (
-        <span className="material-symbols-outlined text-[24px] text-white ml-3 filled">
+        <span className="material-symbols-outlined text-[24px] text-white ml-3 filled" aria-hidden="true">
           check_circle
         </span>
       )}

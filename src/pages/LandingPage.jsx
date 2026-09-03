@@ -42,7 +42,7 @@ export const LandingPage = () => {
 
           {/* Step Indicator */}
           <div className="flex items-center gap-2 text-[#434750] text-xs md:text-sm font-medium">
-            <span>Step 1 of 2</span>
+            <span>Langkah 1 dari 2</span>
             <div className="w-16 h-2 bg-[#DCE2F3] rounded-full overflow-hidden">
               <div className="w-1/2 h-full bg-[#22437C] rounded-full" />
             </div>
@@ -56,13 +56,13 @@ export const LandingPage = () => {
           {/* Intro Heading */}
           <div className="text-center mb-8">
             <span className="inline-block bg-[#F0F3FF] text-[#22437C] font-semibold text-xs px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-              STEP 1 OF 2
+              LANGKAH 1 DARI 2
             </span>
             <h1 className="text-2xl md:text-3xl font-bold text-[#151C27] mb-2">
-              Tell Us About Yourself
+              Biodata Peserta
             </h1>
             <p className="text-sm md:text-base text-[#434750]">
-              Silakan lengkapi biodata diri Anda sebelum memulai placement test.
+              Lengkapi biodata diri Anda untuk memulai placement test.
             </p>
           </div>
 
@@ -73,8 +73,8 @@ export const LandingPage = () => {
               <Input
                 id="fullName"
                 name="name"
-                label="Full Name"
-                placeholder="Enter your full name"
+                label="Nama Lengkap"
+                placeholder="Masukkan nama lengkap Anda"
                 value={biodata.name}
                 onChange={(e) => updateField('name', e.target.value)}
                 error={errors.name}
@@ -86,8 +86,8 @@ export const LandingPage = () => {
                 id="email"
                 name="email"
                 type="email"
-                label="Email Address"
-                placeholder="you@example.com"
+                label="Alamat Email"
+                placeholder="nama@email.com"
                 value={biodata.email}
                 onChange={(e) => updateField('email', e.target.value)}
                 error={errors.email}
@@ -99,7 +99,7 @@ export const LandingPage = () => {
                 id="whatsapp"
                 name="whatsapp"
                 type="tel"
-                label="WhatsApp Number"
+                label="Nomor WhatsApp"
                 placeholder="Contoh: 081234567890"
                 value={biodata.whatsapp}
                 onChange={(e) => updateField('whatsapp', e.target.value)}
@@ -111,8 +111,8 @@ export const LandingPage = () => {
               <Input
                 id="domicile"
                 name="domicile"
-                label="Domicile (City)"
-                placeholder="Enter your city (e.g. Jakarta)"
+                label="Kota Domisili"
+                placeholder="Contoh: Jakarta"
                 value={biodata.domicile}
                 onChange={(e) => updateField('domicile', e.target.value)}
                 error={errors.domicile}
@@ -124,8 +124,8 @@ export const LandingPage = () => {
                 id="targetProgram"
                 name="targetProgram"
                 type="select"
-                label="Target Program"
-                placeholder="Select a program"
+                label="Pilihan Program"
+                placeholder="Pilih program"
                 options={TARGET_PROGRAM_OPTIONS}
                 value={biodata.targetProgram}
                 onChange={(e) => updateField('targetProgram', e.target.value)}
@@ -143,7 +143,7 @@ export const LandingPage = () => {
                   icon="arrow_forward"
                   iconPosition="right"
                 >
-                  Continue to Test
+                  Lanjutkan
                 </Button>
               </div>
             </form>

@@ -122,6 +122,10 @@ export const useQuiz = (questions = questionsData) => {
     try {
       localStorage.setItem(QUIZ_RESULT_KEY, JSON.stringify(resultPayload));
       setQuizResult(resultPayload);
+      // Hapus data sesi pengerjaan kuis dari localStorage
+      localStorage.removeItem(QUIZ_ANSWERS_KEY);
+      localStorage.removeItem(QUIZ_PROGRESS_KEY);
+      localStorage.removeItem('quizTimeLeft');
     } catch (err) {
       console.error('Failed to save quizResult to localStorage:', err);
     }
