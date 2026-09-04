@@ -2,10 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import questionsData from '../data/questions.json' with { type: 'json' };
 import { calculateScore, determineLevel } from '../utils/quizCalculator';
 import { getRecommendation } from '../utils/recommendation';
+import { storage } from '../lib/storage';
+import { env } from '../config/env';
 
-export const QUIZ_ANSWERS_KEY = 'quizAnswers';
-export const QUIZ_PROGRESS_KEY = 'quizProgress';
-export const QUIZ_RESULT_KEY = 'quizResult';
+export const QUIZ_ANSWERS_KEY = env.quizAnswersKey;
+export const QUIZ_PROGRESS_KEY = env.quizProgressKey;
+export const QUIZ_RESULT_KEY = env.quizResultKey;
 
 /**
  * Custom hook to manage placement test state, navigation, persistence, and submit processing
@@ -19,10 +21,10 @@ export const useQuiz = (questions = questionsData) => {
 
   const totalQuestions = questions.length;
 
-  // Restore quiz answers and saved result from localStorage on mount
+  // Restore quiz answers and saved result from storage on mount
   useEffect(() => {
     try {
-      const savedAnswers = localStorage.getItem(QUIZ_ANSWERS_KEY);
+      const savedAnswers = storage.getQuizAnswers();
       if (savedAnswers) {
         const parsed = JSON.parse(savedAnswers);
         if (parsed && typeof parsed === 'object') {
@@ -30,7 +32,7 @@ export const useQuiz = (questions = questionsData) => {
         }
       }
 
-      const savedResult = localStorage.getItem(QUIZ_RESULT_KEY);
+      const savedResult = storage.getQuizResult();
       if (savedResult) {
         const parsedResult = JSON.parse(savedResult);
         if (parsedResult && typeof parsedResult === 'object') {
@@ -38,7 +40,7 @@ export const useQuiz = (questions = questionsData) => {
         }
       }
     } catch (err) {
-      console.error('Failed to restore quiz state from localStorage:', err);
+      console.error('Failed to restore quiz state from storage:', err);
     } finally {
       setIsLoaded(true);
     }
@@ -67,16 +69,16 @@ export const useQuiz = (questions = questionsData) => {
           [questionId]: optionIndex,
         };
 
-        // Auto-save progress to localStorage
+        // Auto-save progress to storage
         try {
-          localStorage.setItem(QUIZ_ANSWERS_KEY, JSON.stringify(updated));
+          storage.setQuizAnswers(updated);
           const answeredCount = Object.keys(updated).filter(
             (k) => updated[k] !== undefined && updated[k] !== null
           ).length;
           const updatedProgress = Math.round((answeredCount / totalQuestions) * 100);
-          localStorage.setItem(QUIZ_PROGRESS_KEY, String(updatedProgress));
+          storage.setQuizProgress(updatedProgress);
         } catch (err) {
-          console.error('Failed to auto-save quiz answers:', err);
+          console.error('Failed to auto-save quiz answers to storage:', err);
         }
 
         return updated;
@@ -120,31 +122,27 @@ export const useQuiz = (questions = questionsData) => {
     };
 
     try {
-      localStorage.setItem(QUIZ_RESULT_KEY, JSON.stringify(resultPayload));
+      storage.setQuizResult(resultPayload);
       setQuizResult(resultPayload);
-      // Hapus data sesi pengerjaan kuis dari localStorage
-      localStorage.removeItem(QUIZ_ANSWERS_KEY);
-      localStorage.removeItem(QUIZ_PROGRESS_KEY);
-      localStorage.removeItem('quizTimeLeft');
+      // Hapus data sesi pengerjaan kuis dari storage
+      storage.clearQuizSession();
     } catch (err) {
-      console.error('Failed to save quizResult to localStorage:', err);
+      console.error('Failed to save quizResult to storage:', err);
     }
 
     return resultPayload;
   }, [answers, questions, totalQuestions]);
 
-  // Reset quiz progress and clear localStorage
+  // Reset quiz progress and clear storage
   const resetQuiz = useCallback(() => {
     setAnswers({});
     setCurrentIndex(0);
     setQuizResult(null);
     try {
-      localStorage.removeItem(QUIZ_ANSWERS_KEY);
-      localStorage.removeItem(QUIZ_PROGRESS_KEY);
-      localStorage.removeItem(QUIZ_RESULT_KEY);
-      localStorage.removeItem('quizTimeLeft');
+      storage.clearQuizSession();
+      storage.removeQuizResult();
     } catch (err) {
-      console.error('Failed to clear quiz localStorage:', err);
+      console.error('Failed to clear quiz storage:', err);
     }
   }, []);
 

@@ -1,15 +1,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';
+import BiodataPage from '../pages/BiodataPage';
 import QuizInfoPage from '../pages/QuizInfoPage';
 import QuizPage from '../pages/QuizPage';
 import ResultPage from '../pages/ResultPage';
 
-export const USER_SESSION_KEY = 'userSession';
-export const QUIZ_RESULT_KEY = 'quizResult';
+import { storage } from '../lib/storage';
 
 const checkQuizSessionValid = () => {
   try {
-    const session = localStorage.getItem(USER_SESSION_KEY);
+    const session = storage.getUserSession();
     if (!session) return false;
     const parsed = JSON.parse(session);
     return Boolean(parsed && typeof parsed === 'object' && parsed.name);
@@ -21,7 +21,7 @@ const checkQuizSessionValid = () => {
 
 const checkResultSessionValid = () => {
   try {
-    const result = localStorage.getItem(QUIZ_RESULT_KEY);
+    const result = storage.getQuizResult();
     if (!result) return false;
     const parsed = JSON.parse(result);
     return Boolean(parsed && typeof parsed === 'object' && parsed.score !== undefined);
@@ -61,6 +61,9 @@ export const AppRoutes = () => {
     <Routes>
       {/* Landing Page */}
       <Route path="/" element={<LandingPage />} />
+
+      {/* Biodata Registration Page */}
+      <Route path="/biodata" element={<BiodataPage />} />
 
       {/* Info Page */}
       <Route

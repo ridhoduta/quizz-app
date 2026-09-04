@@ -1,16 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import useTimer, { TOTAL_QUIZ_TIME_SECONDS } from '../../hooks/useTimer';
 
-export const QUIZ_TIMER_KEY = 'quizTimeLeft';
-export const TOTAL_QUIZ_TIME_SECONDS = 600; // 10 minutes = 600 seconds
-
-/**
- * QuestionTimer Component — Overall 10-Minute Quiz Countdown Timer & Progress
- * Features:
- * - Circular countdown with dynamic color ring (green, yellow, red)
- * - Urgency badge indicating time status
- * - Answered question progress summary
- * - Responsive layout: horizontal on mobile, vertical column on desktop
- */
 export const QuestionTimer = ({
   duration = TOTAL_QUIZ_TIME_SECONDS,
   onTimeUp,
@@ -18,60 +7,16 @@ export const QuestionTimer = ({
   answers = {},
   totalQuestions = 15,
 }) => {
-  // Initialize timer state from localStorage or full duration (600s)
-  const [timeLeft, setTimeLeft] = useState(() => {
-    try {
-      const saved = localStorage.getItem(QUIZ_TIMER_KEY);
-      if (saved) {
-        const parsed = parseInt(saved, 10);
-        if (!isNaN(parsed) && parsed >= 0) {
-          return parsed;
-        }
-      }
-    } catch (err) {
-      console.error('Failed to parse quizTimeLeft:', err);
-    }
-    return duration;
-  });
-
-  const onTimeUpRef = useRef(onTimeUp);
-  useEffect(() => {
-    onTimeUpRef.current = onTimeUp;
-  }, [onTimeUp]);
-
-  // Continuously count down 1 second at a time
-  useEffect(() => {
-    if (!isActive) return;
-
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          try {
-            localStorage.setItem(QUIZ_TIMER_KEY, '0');
-          } catch (e) {
-            console.error(e);
-          }
-          if (onTimeUpRef.current) {
-            onTimeUpRef.current();
-          }
-          return 0;
-        }
-        const updated = prev - 1;
-        try {
-          localStorage.setItem(QUIZ_TIMER_KEY, String(updated));
-        } catch (e) {
-          console.error(e);
-        }
-        return updated;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [isActive]);
-
-  const remainingPercent = Math.max(0, Math.min(100, (timeLeft / duration) * 100));
-  const elapsedPercent = 100 - remainingPercent;
+  const {
+    formattedTime,
+    remainingPercent,
+    ringColor,
+    ringBg,
+    textColor,
+    urgencyLabel,
+    urgencyClass,
+    pulseRing,
+  } = useTimer({ duration, onTimeUp, isActive });
 
   // Answered questions progress calculation
   const answeredCount = Object.keys(answers).filter(
@@ -79,42 +24,10 @@ export const QuestionTimer = ({
   ).length;
   const progressPercent = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
 
-  // Color thresholds
-  let ringColor = '#10B981'; // green
-  let ringBg = '#D1FAE5';
-  let textColor = 'text-emerald-600';
-  let urgencyLabel = 'Waktu Sangat Cukup';
-  let urgencyClass = 'text-emerald-700 bg-emerald-50 border-emerald-200';
-  let pulseRing = '';
-
-  if (elapsedPercent >= 75) {
-    // < 2.5 mins remaining
-    ringColor = '#EF4444';
-    ringBg = '#FEE2E2';
-    textColor = 'text-red-600';
-    urgencyLabel = 'Waktu Kritis! (<2.5m)';
-    urgencyClass = 'text-red-700 bg-red-50 border-red-200';
-    pulseRing = 'animate-pulse';
-  } else if (elapsedPercent >= 25) {
-    // 2.5m - 7.5m remaining
-    ringColor = '#F59E0B';
-    ringBg = '#FEF3C7';
-    textColor = 'text-amber-600';
-    urgencyLabel = 'Perhatikan Waktu';
-    urgencyClass = 'text-amber-700 bg-amber-50 border-amber-200';
-  }
-
   // SVG circle ring math
   const radius = 46;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (remainingPercent / 100) * circumference;
-
-  // Format seconds to mm:ss
-  const formatTime = (s) => {
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return `${m < 10 ? '0' : ''}${m}:${sec < 10 ? '0' : ''}${sec}`;
-  };
 
   return (
     <div className="flex flex-row md:flex-col items-center justify-between gap-4 md:gap-3.5 w-full">
@@ -153,7 +66,7 @@ export const QuestionTimer = ({
         {/* Center Content */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center">
           <span className={`font-mono text-xl sm:text-2xl md:text-3xl font-extrabold leading-none tracking-tight ${textColor}`}>
-            {formatTime(timeLeft)}
+            {formattedTime}
           </span>
           <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold mt-0.5 md:mt-1 uppercase tracking-wider">
             Sisa Waktu
@@ -188,3 +101,4 @@ export const QuestionTimer = ({
 };
 
 export default QuestionTimer;
+

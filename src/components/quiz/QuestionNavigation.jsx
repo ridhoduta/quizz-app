@@ -30,7 +30,7 @@ export const QuestionNavigation = ({
           const isAnswered = answers[questionId] !== undefined && answers[questionId] !== null;
           const isActive = idx === currentIndex;
 
-          let style = '';
+          let style;
 
           if (isActive) {
             style = isAnswered

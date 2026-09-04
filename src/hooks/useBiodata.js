@@ -1,7 +1,9 @@
 import { useState, useCallback } from 'react';
 import { validateBiodata } from '../utils/validation';
+import { storage } from '../lib/storage';
+import { env } from '../config/env';
 
-export const USER_SESSION_KEY = 'userSession';
+export const USER_SESSION_KEY = env.userSessionKey;
 
 const INITIAL_BIODATA = {
   name: '',
@@ -12,12 +14,12 @@ const INITIAL_BIODATA = {
 };
 
 /**
- * Custom hook to manage user biodata form state, validation, and localStorage persistence
+ * Custom hook to manage user biodata form state, validation, and storage persistence
  */
 export const useBiodata = () => {
   const [biodata, setBiodata] = useState(() => {
     try {
-      const savedSession = localStorage.getItem(USER_SESSION_KEY);
+      const savedSession = storage.getUserSession();
       if (savedSession) {
         const parsed = JSON.parse(savedSession);
         if (parsed && typeof parsed === 'object') {
@@ -25,7 +27,7 @@ export const useBiodata = () => {
         }
       }
     } catch (err) {
-      console.error('Failed to parse userSession from localStorage:', err);
+      console.error('Failed to parse userSession from storage:', err);
     }
     return INITIAL_BIODATA;
   });
@@ -47,7 +49,7 @@ export const useBiodata = () => {
     });
   }, []);
 
-  // Validate form and save to localStorage
+  // Validate form and save to storage
   const saveBiodata = useCallback(() => {
     const validationResult = validateBiodata(biodata);
 
@@ -57,11 +59,11 @@ export const useBiodata = () => {
     }
 
     try {
-      localStorage.setItem(USER_SESSION_KEY, JSON.stringify(biodata));
+      storage.setUserSession(biodata);
       setErrors({});
       return { success: true, data: biodata };
     } catch (err) {
-      console.error('Failed to save userSession to localStorage:', err);
+      console.error('Failed to save userSession to storage:', err);
       return { success: false, errors: { general: 'Gagal menyimpan data ke browser.' } };
     }
   }, [biodata]);
@@ -71,7 +73,7 @@ export const useBiodata = () => {
     setBiodata(INITIAL_BIODATA);
     setErrors({});
     try {
-      localStorage.removeItem(USER_SESSION_KEY);
+      storage.removeUserSession();
     } catch (err) {
       console.error('Failed to clear userSession:', err);
     }
