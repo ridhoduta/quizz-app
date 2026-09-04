@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useBiodata from '../hooks/useBiodata';
 import Button from '../components/common/Button';
 import Loading from '../components/common/Loading';
+import Header from '../components/section/Header';
+import Footerv2 from '../components/section/Footerv2';
 
 export const QuizInfoPage = () => {
   const navigate = useNavigate();
@@ -31,26 +33,7 @@ export const QuizInfoPage = () => {
   return (
     <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
       {/* Header */}
-      <header className="bg-white border-b border-[#C4C6D1] py-4 px-4 md:px-10 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-[28px] text-[#22437C] filled">
-              school
-            </span>
-            <span className="text-lg md:text-xl font-bold text-[#012C64]">
-              English Placement Test
-            </span>
-          </div>
-
-          {/* Step Indicator */}
-          <div className="flex items-center gap-2 text-[#434750] text-xs md:text-sm font-medium">
-            <span>Langkah 2 dari 2</span>
-            <div className="w-16 h-2 bg-[#DCE2F3] rounded-full overflow-hidden">
-              <div className="w-full h-full bg-[#22437C] rounded-full" />
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 w-full">
@@ -257,18 +240,8 @@ export const QuizInfoPage = () => {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white py-6 border-t border-[#C4C6D1] text-xs text-[#434750] mt-auto">
-        <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
-          <span>© 2026 Academic English Systems. All rights reserved.</span>
-          <div className="flex gap-4">
-            <span className="hover:underline cursor-pointer">Privacy Policy</span>
-            <span className="hover:underline cursor-pointer">Terms of Service</span>
-            <span className="hover:underline cursor-pointer">Contact Support</span>
-          </div>
-        </div>
-      </footer>
+    <Footerv2/>
+     
     </div>
   );
 };

@@ -33,7 +33,7 @@ const STEPS_DATA = [
     number: '3',
     title: 'Lihat Hasil',
     icon: 'analytics',
-    description: 'Skor CEFR resmi dan evaluasi kekuatan serta kelemahan realtime.',
+    description: 'Lihat hasil ketahui skor dan ringkasan jawabanmu secara objektif.',
     // Koordinat waypoint pada viewBox 540 x 680 (x=140, y=420)
     xPercent: 25.9,
     yPercent: 61.8,
@@ -45,14 +45,13 @@ const STEPS_DATA = [
     id: 4,
     number: '4',
     title: 'Rekomendasi',
-    icon: 'stars',
+    icon: 'school',
     description: 'Saran kurikulum yang tepat sasaran serta konsultasi kelas terarah.',
     // Koordinat waypoint pada viewBox 540 x 680 (x=400, y=620)
     xPercent: 74.1,
     yPercent: 91.2,
     side: 'right', // label di sisi kanan agar jalan di sisi kiri tidak tertutup
     color: '#A9213F',
-    badge: 'Hasil Akhir',
   },
 ];
 
@@ -84,15 +83,12 @@ export const StepsSection = ({ onStartTest }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Sisi Kiri: Narrative Box & CTA */}
         <div className="lg:col-span-5 flex flex-col items-start z-10">
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#ffe4e8] text-[#A9213F] text-xs uppercase font-bold tracking-widest mb-4 border border-[#A9213F]/20">
-            #ALURPRAKTIS
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold text-[#22437C] tracking-tight leading-[1.12] mb-5">
             4 Langkah Menuju Level Bahasa Inggrismu
           </h2>
           <div className="w-14 h-1 bg-[#A9213F] rounded-full mb-6" />
           <p className="text-base md:text-lg text-[#434750] leading-relaxed mb-8">
-            Roadmap praktis dari pendaftaran hingga mendapatkan rekomendasi program yang tepat, adaptif, dan akurat bersama Cakap.
+            Roadmap praktis dari pendaftaran hingga mendapatkan rekomendasi program yang tepat, adaptif, dan akurat bersama BunnySpeak Course.
           </p>
 
           {/* Feature callout card */}
@@ -102,40 +98,13 @@ export const StepsSection = ({ onStartTest }) => {
                 <span className="material-symbols-outlined text-[22px]">verified</span>
               </div>
               <div>
-                <h4 className="text-base font-bold text-[#22437C]">Satu Tes Singkat, Hasil Teruji</h4>
+                <h4 className="text-base font-bold text-[#22437C]">Satu Tes Singkat, dan Lihat Hasilnya</h4>
                 <p className="text-xs text-[#434750] leading-relaxed mt-1">
-                  Hanya butuh 10 menit. Akurasi terjamin berstandar CEFR dan hasil langsung keluar tanpa menunggu.
+                  Ketahui Level Bahasa Inggrismu dan dapatkan rekomendasi program yang tepat sasaran secara objektif
                 </p>
               </div>
             </div>
           </div>
-
-          {/* Dynamic Active Step Insight */}
-          {currentActiveStep ? (
-            <div className="w-full p-4 rounded-xl bg-[#f0f3ff] border border-[#22437C]/20 shadow-sm mb-6 animate-in fade-in duration-200">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-6 h-6 rounded-full bg-[#22437C] text-white text-xs font-bold flex items-center justify-center">
-                  {currentActiveStep.number}
-                </span>
-                <span className="font-bold text-sm text-[#22437C]">
-                  {currentActiveStep.title}
-                </span>
-                {currentActiveStep.badge && (
-                  <span className="px-1.5 py-0.5 rounded bg-[#A9213F] text-white text-[10px] font-bold uppercase">
-                    {currentActiveStep.badge}
-                  </span>
-                )}
-              </div>
-              <p className="text-xs text-[#434750] leading-relaxed pl-8">
-                {currentActiveStep.description}
-              </p>
-            </div>
-          ) : (
-            <div className="w-full p-3.5 rounded-xl bg-slate-50 border border-dashed border-slate-200 text-slate-500 text-xs flex items-center gap-2 mb-6">
-              <span className="material-symbols-outlined text-[18px] text-[#22437C]">info</span>
-              <span>Arahkan kursor atau klik pointer roadmap untuk melihat penjelasan tiap langkah.</span>
-            </div>
-          )}
 
           {/* Action CTA Button */}
           <div>
@@ -152,11 +121,6 @@ export const StepsSection = ({ onStartTest }) => {
 
         {/* Sisi Kanan: Connected Stepper Roadmap (SVG Tidak Tertutupi) */}
         <div className="lg:col-span-7 relative flex flex-col items-center justify-center w-full">
-          {/* Instruksi interaktif */}
-          <div className="mb-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-medium flex items-center gap-1.5 shadow-sm">
-            <span className="material-symbols-outlined text-[16px] text-[#22437C]">touch_app</span>
-            <span>Hover / klik pointer untuk penjelasan</span>
-          </div>
 
           {/* Desktop/Tablet: Serpentine SVG Roadmap with Outer Non-Obstructing Pointers */}
           <div className="hidden sm:block w-full max-w-[580px] relative py-4">

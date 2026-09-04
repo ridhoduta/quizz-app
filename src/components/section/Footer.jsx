@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const Footer = ({ onStartTest }) => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export const Footer = ({ onStartTest }) => {
     if (onStartTest) {
       onStartTest();
     } else {
-      navigate('/biodata');
+      navigate("/biodata");
     }
   };
 
@@ -16,7 +16,7 @@ export const Footer = ({ onStartTest }) => {
     e.preventDefault();
     const elem = document.getElementById(sectionId);
     if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      elem.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -28,14 +28,17 @@ export const Footer = ({ onStartTest }) => {
           <div className="max-w-md">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-8 rounded-lg bg-[#22437C] text-white flex items-center justify-center">
-                <span className="material-symbols-outlined text-[20px]">school</span>
+                <span className="material-symbols-outlined text-[20px]">
+                  school
+                </span>
               </div>
               <span className="text-xl text-[#22437C] font-bold">
-                English Placement Test
+                BunnySpeak Course
               </span>
             </div>
             <p className="text-sm text-[#434750] leading-relaxed">
-              Test kemampuan bahasa Inggris dan temukan program yang sesuai dengan levelmu bersama kurikulum berstandar CEFR.
+              Test kemampuan bahasa Inggris dan temukan program yang sesuai
+              dengan levelmu bersama kurikulum berstandar CEFR.
             </p>
           </div>
 
@@ -43,17 +46,19 @@ export const Footer = ({ onStartTest }) => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             {/* Menu Utama */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">Menu Utama</span>
+              <span className="text-sm text-[#151c27] font-semibold">
+                Menu Utama
+              </span>
               <a
                 href="#program-section"
-                onClick={(e) => scrollToSection(e, 'program-section')}
+                onClick={(e) => scrollToSection(e, "program-section")}
                 className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
               >
                 Program
               </a>
               <a
                 href="#cara-mengikuti"
-                onClick={(e) => scrollToSection(e, 'cara-mengikuti')}
+                onClick={(e) => scrollToSection(e, "cara-mengikuti")}
                 className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
               >
                 Cara Mengikuti
@@ -69,7 +74,9 @@ export const Footer = ({ onStartTest }) => {
 
             {/* Legalitas */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">Legalitas</span>
+              <span className="text-sm text-[#151c27] font-semibold">
+                Legalitas
+              </span>
               <a
                 href="#privacy"
                 onClick={(e) => e.preventDefault()}
@@ -88,7 +95,9 @@ export const Footer = ({ onStartTest }) => {
 
             {/* Bantuan */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">Bantuan</span>
+              <span className="text-sm text-[#151c27] font-semibold">
+                Bantuan
+              </span>
               <a
                 href="https://wa.me/"
                 target="_blank"
@@ -106,13 +115,6 @@ export const Footer = ({ onStartTest }) => {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Copyright */}
-        <div className="text-center sm:text-left bg-[#f4f7fd] rounded-lg p-4 border border-slate-200">
-          <p className="text-xs text-[#434750]">
-            © 2026 English Placement Test. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

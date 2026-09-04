@@ -6,6 +6,8 @@ import RecommendationCard from '../components/result/RecommendationCard';
 import QuestionReviewList from '../components/result/QuestionReviewList';
 import WhatsAppButton from '../components/result/WhatsAppButton';
 import Loading from '../components/common/Loading';
+import Header from '../components/section/Header';
+import Footerv2 from '../components/section/Footerv2';
 
 export const ResultPage = () => {
   const navigate = useNavigate();
@@ -25,26 +27,7 @@ export const ResultPage = () => {
   return (
     <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
       {/* ── 1. NAVBAR ── */}
-      <header className="bg-white border-b border-[#C4C6D1] sticky top-0 z-40 shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-[28px] text-[#22437C] filled">
-              school
-            </span>
-            <span className="font-bold text-lg md:text-xl text-[#012C64]">
-              English Placement Test
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 text-[#22437C] font-semibold text-xs md:text-sm bg-[#E2E8F8] px-3.5 py-1.5 rounded-full">
-            <span className="material-symbols-outlined text-[18px] filled">
-              check_circle
-            </span>
-            <span>Test Selesai</span>
-          </div>
-        </div>
-      </header>
-
+      <Header/>
       {/* Main Content Container */}
       <main className="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 flex flex-col gap-10">
 
@@ -106,17 +89,7 @@ export const ResultPage = () => {
       </main>
 
       {/* ── 6. FOOTER ── */}
-      <footer className="bg-white border-t border-[#C4C6D1] text-xs text-[#434750] py-6 mt-auto">
-        <div className="max-w-5xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
-          <span className="font-bold text-[#012C64]">English Placement Test Engine</span>
-          <div className="flex gap-4">
-            <span className="hover:underline cursor-pointer">Privacy Policy</span>
-            <span className="hover:underline cursor-pointer">Terms of Service</span>
-            <span className="hover:underline cursor-pointer">Contact Support</span>
-          </div>
-          <span>© 2026 Academic English Systems. All rights reserved.</span>
-        </div>
-      </footer>
+      <Footerv2/>
     </div>
   );
 };

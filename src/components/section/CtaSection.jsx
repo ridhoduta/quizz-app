@@ -22,10 +22,6 @@ export const CtaSection = ({ onStartTest }) => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           {/* Left Column: Heading & Key Points */}
           <div className="flex flex-col items-start text-left max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#A9213F] text-white text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-              <span className="material-symbols-outlined text-[15px]">schedule</span>
-              Gratis &amp; Bebas Biaya
-            </span>
             <h2 className="text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight text-white leading-tight mb-4">
               Sudah Siap Mengetahui Level Bahasa Inggrismu?
             </h2>
@@ -41,10 +37,6 @@ export const CtaSection = ({ onStartTest }) => {
                 <span className="material-symbols-outlined text-[16px] text-white">timer</span>
                 ±10 Menit
               </span>
-              <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/15">
-                <span className="material-symbols-outlined text-[16px] text-white">bolt</span>
-                Hasil Langsung Keluar
-              </span>
             </div>
           </div>
 
@@ -53,14 +45,14 @@ export const CtaSection = ({ onStartTest }) => {
             <button
               type="button"
               onClick={handleStart}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-[#22437C] hover:bg-slate-100 text-base md:text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all active:scale-95 font-bold text-center cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#B12844] text-[#ffff] hover:bg-slate-100 text-base md:text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all active:scale-95 font-bold text-center cursor-pointer hover:text-[#012c64]"
             >
               <span>Mulai Placement Test</span>
               <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
             </button>
             <span className="flex items-center gap-1.5 mt-3 text-white/90 text-xs md:text-[13px]">
               <span className="material-symbols-outlined text-[16px] text-white">verified_user</span>
-              Akurat &amp; Hasil Instan Berstandar CEFR
+              Ketahui levelmu secara objektif dan temukan program yang tepat 
             </span>
           </div>
         </div>

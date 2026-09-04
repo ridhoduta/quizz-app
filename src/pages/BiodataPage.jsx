@@ -1,18 +1,37 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import useBiodata from '../hooks/useBiodata';
+import usePrograms from '../hooks/usePrograms';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import Loading from '../components/common/Loading';
-
-const TARGET_PROGRAM_OPTIONS = [
-  { value: 'General English', label: 'General English' },
-  { value: 'English Conversation', label: 'English Conversation' },
-  { value: 'Academic & Business English', label: 'Academic & Business English' },
-];
+import Header from '../components/section/Header';
+import Footerv2 from '../components/section/Footerv2';
 
 export const BiodataPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { programs, programOptions } = usePrograms();
   const { biodata, errors, isLoaded, updateField, saveBiodata } = useBiodata();
+  const hasInitializedSelection = useRef(false);
+
+  // Auto-populate targetProgram if passed from landing page (e.g. ProgramsSection or HeroSection)
+  useEffect(() => {
+    if (hasInitializedSelection.current) return;
+    const selectedFromState = location.state?.selectedProgram;
+    if (selectedFromState && programs.length > 0) {
+      hasInitializedSelection.current = true;
+      const matched = programs.find(
+        (p) =>
+          p.title.toLowerCase() === selectedFromState.toLowerCase() ||
+          p.id.toLowerCase() === selectedFromState.toLowerCase() ||
+          p.level.toLowerCase() === selectedFromState.toLowerCase() ||
+          selectedFromState.toLowerCase().includes(p.level.toLowerCase())
+      );
+      const targetValue = matched ? matched.title : selectedFromState;
+      updateField('targetProgram', targetValue);
+    }
+  }, [location.state, programs, updateField]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,26 +48,7 @@ export const BiodataPage = () => {
   return (
     <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
       {/* Header */}
-      <header className="bg-white border-b border-[#C4C6D1] py-4 px-4 md:px-10 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-[28px] text-[#22437C] filled">
-              school
-            </span>
-            <span className="text-lg md:text-xl font-bold text-[#012C64]">
-              English Placement Test
-            </span>
-          </div>
-
-          {/* Step Indicator */}
-          <div className="flex items-center gap-2 text-[#434750] text-xs md:text-sm font-medium">
-            <span>Langkah 1 dari 2</span>
-            <div className="w-16 h-2 bg-[#DCE2F3] rounded-full overflow-hidden">
-              <div className="w-1/2 h-full bg-[#22437C] rounded-full" />
-            </div>
-          </div>
-        </div>
-      </header>
+     <Header />
 
       {/* Main Form Content */}
       <main className="flex-grow flex flex-col items-center justify-center p-4 md:p-10 my-6">
@@ -126,7 +126,7 @@ export const BiodataPage = () => {
                 type="select"
                 label="Pilihan Program"
                 placeholder="Pilih program"
-                options={TARGET_PROGRAM_OPTIONS}
+                options={programOptions}
                 value={biodata.targetProgram}
                 onChange={(e) => updateField('targetProgram', e.target.value)}
                 error={errors.targetProgram}
@@ -152,20 +152,7 @@ export const BiodataPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white py-6 border-t border-[#C4C6D1] text-xs text-[#434750] mt-auto">
-        <div className="max-w-6xl mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-[#012C64]">English Placement Test</span>
-            <span className="hidden md:inline">•</span>
-            <span>© 2026 Academic English Systems. All rights reserved.</span>
-          </div>
-          <div className="flex gap-4">
-            <span className="hover:underline cursor-pointer">Privacy Policy</span>
-            <span className="hover:underline cursor-pointer">Terms of Service</span>
-            <span className="hover:underline cursor-pointer">Contact Support</span>
-          </div>
-        </div>
-      </footer>
+      <Footerv2/>
     </div>
   );
 };
