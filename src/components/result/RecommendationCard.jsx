@@ -1,16 +1,10 @@
 import Button from '../common/Button';
-
-/**
- * RecommendationCard Component displaying recommended program details and features
- */
 export const RecommendationCard = ({ recommendation, onSelectProgram }) => {
   if (!recommendation) return null;
 
   return (
     <div className="w-full bg-[#F9F9FF] border-2 border-[#22437C] rounded-2xl p-6 md:p-8 ambient-shadow relative overflow-hidden">
-      {/* Decorative accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#22437C]" />
-
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pl-2">
         <div className="flex-grow flex flex-col gap-3">
           {/* Level Tag */}

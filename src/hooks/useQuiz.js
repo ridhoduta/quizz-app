@@ -9,10 +9,6 @@ export const QUIZ_ANSWERS_KEY = env.quizAnswersKey;
 export const QUIZ_PROGRESS_KEY = env.quizProgressKey;
 export const QUIZ_RESULT_KEY = env.quizResultKey;
 
-/**
- * Custom hook to manage placement test state, navigation, persistence, and submit processing
- * @param {Array} questions List of questions (defaults to questions.json)
- */
 export const useQuiz = (questions = questionsData) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -20,8 +16,6 @@ export const useQuiz = (questions = questionsData) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const totalQuestions = questions.length;
-
-  // Restore quiz answers and saved result from storage on mount
   useEffect(() => {
     try {
       const savedAnswers = storage.getQuizAnswers();

@@ -8,9 +8,9 @@ const STEPS_DATA = [
     title: 'Lengkapi Biodata',
     icon: 'person_edit',
     description: 'Isi profil singkat, riwayat belajar, dan tentukan target capaianmu.',
-    // Koordinat waypoint pada viewBox 540 x 680 (x=140, y=50)
+    // Koordinat waypoint pada viewBox 540 x 680 (x=140, y=81)
     xPercent: 25.9,
-    yPercent: 7.4,
+    yPercent: 12.0,
     side: 'left', // label di sisi kiri agar jalan di sisi kanan tidak tertutup
     color: '#22437C',
     badge: null,
@@ -21,9 +21,9 @@ const STEPS_DATA = [
     title: 'Kerjakan Test',
     icon: 'quiz',
     description: 'Jawab 15 butir soal adaptif guna mengukur grammar & vocab secara akurat.',
-    // Koordinat waypoint pada viewBox 540 x 680 (x=390, y=230)
-    xPercent: 72.2,
-    yPercent: 33.8,
+    // Koordinat waypoint pada viewBox 540 x 680 (x=400, y=340)
+    xPercent: 74.1,
+    yPercent: 50.0,
     side: 'right', // label di sisi kanan agar jalan di sisi kiri tidak tertutup
     color: '#22437C',
     badge: null,
@@ -31,27 +31,15 @@ const STEPS_DATA = [
   {
     id: 3,
     number: '3',
-    title: 'Lihat Hasil',
+    title: 'Lihat Hasil & Rekomendasi Kelas',
     icon: 'analytics',
-    description: 'Lihat hasil ketahui skor dan ringkasan jawabanmu secara objektif.',
-    // Koordinat waypoint pada viewBox 540 x 680 (x=140, y=420)
+    description: 'Ketahui hasilmu serta dapatkan rekomendasi kelas yang tepat sasaran.',
+    // Koordinat waypoint pada viewBox 540 x 680 (x=140, y=598)
     xPercent: 25.9,
-    yPercent: 61.8,
+    yPercent: 88.0,
     side: 'left', // label di sisi kiri agar jalan di sisi kanan tidak tertutup
-    color: '#22437C',
-    badge: null,
-  },
-  {
-    id: 4,
-    number: '4',
-    title: 'Rekomendasi',
-    icon: 'school',
-    description: 'Saran kurikulum yang tepat sasaran serta konsultasi kelas terarah.',
-    // Koordinat waypoint pada viewBox 540 x 680 (x=400, y=620)
-    xPercent: 74.1,
-    yPercent: 91.2,
-    side: 'right', // label di sisi kanan agar jalan di sisi kiri tidak tertutup
     color: '#A9213F',
+    badge: 'Hasil Akhir',
   },
 ];
 
@@ -84,7 +72,7 @@ export const StepsSection = ({ onStartTest }) => {
         {/* Sisi Kiri: Narrative Box & CTA */}
         <div className="lg:col-span-5 flex flex-col items-start z-10">
           <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold text-[#22437C] tracking-tight leading-[1.12] mb-5">
-            4 Langkah Menuju Level Bahasa Inggrismu
+            3 Langkah Menuju Level Bahasa Inggrismu
           </h2>
           <div className="w-14 h-1 bg-[#A9213F] rounded-full mb-6" />
           <p className="text-base md:text-lg text-[#434750] leading-relaxed mb-8">
@@ -134,7 +122,7 @@ export const StepsSection = ({ onStartTest }) => {
               >
                 {/* Thick Road Track */}
                 <path 
-                  d="M 140 50 C 380 70, 430 190, 390 230 C 330 290, 110 310, 140 420 C 160 490, 420 480, 400 620" 
+                  d="M 140 81 C 410 120, 440 280, 400 340 C 350 420, 110 520, 140 598" 
                   stroke="#35455E" 
                   strokeWidth="44" 
                   strokeLinecap="round" 
@@ -142,7 +130,7 @@ export const StepsSection = ({ onStartTest }) => {
                 />
                 {/* Dashed Center Road Stripe */}
                 <path 
-                  d="M 140 50 C 380 70, 430 190, 390 230 C 330 290, 110 310, 140 420 C 160 490, 420 480, 400 620" 
+                  d="M 140 81 C 410 120, 440 280, 400 340 C 350 420, 110 520, 140 598" 
                   stroke="#ffffff" 
                   strokeWidth="3" 
                   strokeLinecap="round" 
@@ -202,7 +190,7 @@ export const StepsSection = ({ onStartTest }) => {
                           {step.number}
                         </div>
 
-                        {/* Outer Label Card (Hanya Judul saat normal, membuka Penjelasan saat Hover/Click) */}
+                        {/* Outer Label Card */}
                         <div
                           role="button"
                           tabIndex={0}
@@ -211,7 +199,7 @@ export const StepsSection = ({ onStartTest }) => {
                           onMouseLeave={() => setHoveredStep(null)}
                           className={`bg-white rounded-xl border border-slate-200/90 shadow-md transition-all duration-300 cursor-pointer text-right overflow-hidden ${
                             isOpen 
-                              ? 'w-64 p-3.5 border-r-4 border-r-[#22437C] shadow-xl ring-2 ring-[#22437C]/20 -translate-x-1' 
+                              ? 'w-70 p-3.5 border-r-4 border-r-[#22437C] shadow-xl ring-2 ring-[#22437C]/20 -translate-x-1' 
                               : 'px-3 py-2 hover:shadow-lg border-r-4 border-r-[#22437C] hover:border-slate-300'
                           }`}
                         >

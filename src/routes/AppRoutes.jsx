@@ -4,6 +4,7 @@ import BiodataPage from '../pages/BiodataPage';
 import QuizInfoPage from '../pages/QuizInfoPage';
 import QuizPage from '../pages/QuizPage';
 import ResultPage from '../pages/ResultPage';
+import NotFound from '../pages/Notfound';
 
 import { storage } from '../lib/storage';
 
@@ -95,8 +96,8 @@ export const AppRoutes = () => {
         }
       />
 
-      {/* Fallback Catch-all Route */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {/* 404 Not Found — Catch-all Route */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

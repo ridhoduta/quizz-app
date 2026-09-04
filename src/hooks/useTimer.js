@@ -3,14 +3,6 @@ import { storage } from '../lib/storage';
 import { TIMER } from '../constants';
 
 export const TOTAL_QUIZ_TIME_SECONDS = TIMER.DEFAULT_TIME;
-
-/**
- * Custom hook to manage quiz countdown timer, storage synchronization, and urgency calculations
- * @param {Object} options
- * @param {number} options.duration Total timer duration in seconds (defaults to TIMER.DEFAULT_TIME = 600)
- * @param {Function} options.onTimeUp Callback when timer reaches 0
- * @param {boolean} options.isActive Whether timer countdown is running
- */
 export const useTimer = ({
   duration = TIMER.DEFAULT_TIME,
   onTimeUp,
@@ -92,7 +84,6 @@ export const useTimer = ({
   // Urgency & color states based on elapsed percentage
   const urgency = useMemo(() => {
     if (elapsedPercent >= 75) {
-      // < 2.5 mins remaining
       return {
         level: 'critical',
         ringColor: '#EF4444',
@@ -104,7 +95,6 @@ export const useTimer = ({
       };
     }
     if (elapsedPercent >= 25) {
-      // 2.5m - 7.5m remaining
       return {
         level: 'warning',
         ringColor: '#F59E0B',

@@ -1,7 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import rawPrograms from '../data/programs.json' with { type: 'json' };
 
-// UI metadata mapped per level for rich presentation
 const LEVEL_METADATA = {
   Beginner: {
     icon: 'stairs',
@@ -32,13 +31,8 @@ const LEVEL_METADATA = {
   },
 };
 
-/**
- * Custom hook to retrieve and manage course programs from programs.json
- */
 export const usePrograms = () => {
   const [programs] = useState(rawPrograms);
-
-  // Formatted dropdown options for select inputs (e.g., in BiodataPage)
   const programOptions = useMemo(() => {
     return programs.map((prog) => ({
       value: prog.title,
@@ -47,8 +41,6 @@ export const usePrograms = () => {
       id: prog.id,
     }));
   }, [programs]);
-
-  // Enriched programs with UI presentation metadata (used by ProgramsSection)
   const enrichedPrograms = useMemo(() => {
     return programs.map((prog) => {
       const meta = LEVEL_METADATA[prog.level] || {

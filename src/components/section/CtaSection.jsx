@@ -14,13 +14,11 @@ export const CtaSection = ({ onStartTest }) => {
 
   return (
     <section className="w-full bg-[#22437C] text-white py-16 md:py-20 relative overflow-hidden">
-      {/* Decorative ambient background spots */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#A9213F]/20 rounded-full blur-3xl pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-          {/* Left Column: Heading & Key Points */}
+          {/* Left Column*/}
           <div className="flex flex-col items-start text-left max-w-2xl">
             <h2 className="text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight text-white leading-tight mb-4">
               Sudah Siap Mengetahui Level Bahasa Inggrismu?
@@ -40,7 +38,7 @@ export const CtaSection = ({ onStartTest }) => {
             </div>
           </div>
 
-          {/* Right Column: CTA Action Button */}
+          {/* Right Column*/}
           <div className="flex flex-col items-center lg:items-end w-full sm:w-auto shrink-0">
             <button
               type="button"

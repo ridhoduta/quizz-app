@@ -12,10 +12,6 @@ const INITIAL_BIODATA = {
   domicile: '',
   targetProgram: '',
 };
-
-/**
- * Custom hook to manage user biodata form state, validation, and storage persistence
- */
 export const useBiodata = () => {
   const [biodata, setBiodata] = useState(() => {
     try {

@@ -59,7 +59,6 @@ export const HeroSection = ({ onStartTest }) => {
           </div>
 
           <div className="lg:col-span-5 flex justify-center items-center mt-6 lg:mt-0 relative z-10">
-            {/* <div className="absolute -inset-2 bg-gradient-to-r from-sky-400/20 via-[#A9213F]/20 to-amber-300/20 rounded-3xl blur-2xl -z-10 transform scale-95 group-hover:scale-105 transition-all duration-500" /> */}
             <div className="relative w-full max-w-[500px]">
               <div className="relative w-full rounded-3xl overflow-hidden p-3 sm:p-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] border-2 border-white/60 transition-all duration-300 hover:shadow-[0_30px_60px_-10px_rgba(0,0,0,0.45)] group">
                 {!imgError ? (

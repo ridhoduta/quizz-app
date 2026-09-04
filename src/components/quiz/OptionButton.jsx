@@ -1,6 +1,3 @@
-/**
- * OptionButton Component for multiple choice quiz options
- */
 export const OptionButton = ({
   letter,
   text,
@@ -41,8 +38,6 @@ export const OptionButton = ({
       <span className="text-base md:text-lg flex-1 font-medium leading-snug">
         {text}
       </span>
-
-      {/* Checkmark Icon when Selected */}
       {isSelected && (
         <span className="material-symbols-outlined text-[24px] text-white ml-3 filled" aria-hidden="true">
           check_circle

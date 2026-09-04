@@ -95,8 +95,6 @@ export const QuestionReviewList = ({ userAnswers = {} }) => {
             filteredQuestions.map((q) => {
               const correctAnswerText = q.options[q.correctAnswer];
               const selectedAnswerText = q.isAnswered ? q.options[q.selectedIndex] : null;
-
-              // Minimal card border: single subtle accent left border only
               const leftBorder = q.isCorrect
                 ? 'border-l-2 border-l-emerald-500'
                 : q.isAnswered
@@ -108,7 +106,6 @@ export const QuestionReviewList = ({ userAnswers = {} }) => {
                   key={q.id}
                   className={`border border-gray-200 rounded-xl overflow-hidden flex flex-col ${leftBorder}`}
                 >
-                  {/* Card Top: number + status */}
                   <div className="flex items-center justify-between px-4 py-2.5 bg-gray-50 border-b border-gray-200">
                     <span className="text-xs font-bold text-gray-600">Soal #{q.id}</span>
                     <span className={`text-[11px] font-semibold ${
@@ -151,8 +148,6 @@ export const QuestionReviewList = ({ userAnswers = {} }) => {
                         );
                       })}
                     </div>
-
-                    {/* Footer: your answer vs correct answer */}
                     <div className="border-t border-gray-100 pt-2.5 flex flex-col gap-1 text-[11px] text-gray-500">
                       <div className="flex justify-between">
                         <span>Jawaban Anda</span>

@@ -1,6 +1,4 @@
-/**
- * Reusable Button Component matching design system mockups
- */
+
 export const Button = ({
   children,
   variant = 'primary',
@@ -15,11 +13,9 @@ export const Button = ({
   fullWidth = false,
   ...props
 }) => {
-  // Base classes — focus-visible ring for keyboard navigation (WCAG 2.2 AA)
   const baseClasses =
     'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
 
-  // Variant classes matching reference html design
   const variantClasses = {
     primary:
       'bg-[#22437C] hover:bg-[#1A3462] text-white shadow-sm hover:shadow-md focus-visible:ring-[#22437C]',
@@ -33,7 +29,6 @@ export const Button = ({
       'bg-transparent text-[#434750] hover:text-[#22437C] hover:bg-[#F0F3FF] focus-visible:ring-[#22437C]',
   };
 
-  // Size classes
   const sizeClasses = {
     sm: 'px-3 py-1.5 text-xs gap-1.5 h-8',
     md: 'px-6 py-2.5 text-sm gap-2 h-11',

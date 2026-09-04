@@ -44,8 +44,6 @@ export const ResultPage = () => {
               Berikut adalah evaluasi skor akhir, tingkat kemampuan, dan ringkasan pencapaian Anda.
             </p>
           </div>
-
-          {/* Circle Gauge & 3 Stat Cards Row */}
           <ResultCard quizResult={quizResult} />
         </section>
 

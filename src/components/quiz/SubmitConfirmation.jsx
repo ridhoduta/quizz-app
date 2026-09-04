@@ -1,8 +1,4 @@
 import Button from '../common/Button';
-
-/**
- * SubmitConfirmation Modal Component
- */
 export const SubmitConfirmation = ({
   isOpen = false,
   onClose,

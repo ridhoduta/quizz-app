@@ -133,8 +133,6 @@ export const QuizPage = () => {
               Soal {currentIndex + 1} / {totalQuestions}
             </span>
           </div>
-
-          {/* Right: navigation toggle (mobile) + fullscreen + submit */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Mobile Navigation Sidebar Trigger */}
             <button
@@ -164,9 +162,9 @@ export const QuizPage = () => {
         </div>
       </div>
 
-      {/* ── Main Layout: Mobile = Timer at top, Desktop = 2-Column with Sidebar ── */}
+      {/* --- Main Layout ---*/}
       <div className="flex-grow w-full max-w-7xl mx-auto px-3 md:px-6 py-4 md:py-8 grid grid-cols-1 lg:grid-cols-[1fr_300px] lg:grid-rows-[auto_1fr] items-start gap-4 md:gap-5">
-        {/* ── 1. TIMER (Mobile: Top above question, Desktop: Right Column Top) ── */}
+        {/* --1. TIMER (Mobile: Top above question, Desktop: Right Column Top) --- */}
         <div className="order-1 lg:order-none lg:col-start-2 lg:row-start-1 bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-5 flex flex-col items-center gap-3 transition-all duration-300 w-full">
           <div className="flex items-center justify-between border-b border-gray-100 pb-2 w-full">
             <div className="flex items-center gap-2">

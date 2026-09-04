@@ -1,13 +1,9 @@
-/**
- * ResultCard Component displaying test score percentage wheel, level title, and score statistics
- */
 export const ResultCard = ({ quizResult }) => {
   const score = quizResult?.score ?? 0;
   const correctCount = quizResult?.correctCount ?? 0;
   const totalQuestions = quizResult?.totalQuestions ?? 15;
   const level = quizResult?.level || 'Beginner';
 
-  // Level Descriptions
   const levelDescriptions = {
     Beginner:
       'Hasil placement test menunjukkan Anda berada di tingkat dasar. Anda siap memperkuat fondasi grammar dan percakapan sehari-hari.',
@@ -17,16 +13,13 @@ export const ResultCard = ({ quizResult }) => {
       'Selamat! Hasil placement test menunjukkan penguasaan tata bahasa dan pemahaman bahasa Inggris yang sangat baik.',
   };
 
-  // Calculate SVG stroke offset (Circumference 2 * PI * r = 2 * PI * 45 = ~283)
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (score / 100) * circumference;
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Circle Score Card */}
       <div className="bg-white rounded-2xl border border-[#C4C6D1] ambient-shadow p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
-        {/* Subtle Background Pattern */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{

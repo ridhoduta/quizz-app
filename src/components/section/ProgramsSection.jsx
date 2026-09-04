@@ -27,7 +27,7 @@ export const ProgramsSection = ({ onSelectProgram }) => {
           </p>
         </div>
 
-        {/* 3 Program Cards Grid dynamically populated from programs.json */}
+        {/* 3 Program Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch pt-3">
           {enrichedPrograms.map((program) => {
             const isFeatured = program.isFeatured;
@@ -41,7 +41,6 @@ export const ProgramsSection = ({ onSelectProgram }) => {
                     : 'border border-slate-200 border-t-4 border-t-[#22437C] shadow-sm hover:shadow-xl'
                 }`}
               >
-                {/* Top Solid Accent Banner for Featured Program */}
                 {isFeatured && (
                   <div className="w-full bg-[#A9213F] text-white py-1.5 px-4 text-center text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-1.5 shadow-sm">
                     <span className="material-symbols-outlined text-[15px]">stars</span>
@@ -106,8 +105,6 @@ export const ProgramsSection = ({ onSelectProgram }) => {
                       {program.tag}
                     </span>
                   </div>
-
-                  {/* Key Features List from programs.json */}
                   <span
                     className={`text-xs font-bold uppercase tracking-wider block mb-3 ${
                       isFeatured ? 'text-[#A9213F]' : 'text-slate-500'

@@ -22,8 +22,6 @@ export const QuestionNavigation = ({
           <span>Belum Dijawab</span>
         </span>
       </div>
-
-      {/* Grid of question buttons with answered checkmark badges */}
       <div className="grid grid-cols-5 gap-2">
         {Array.from({ length: totalQuestions }).map((_, idx) => {
           const questionId = questions[idx]?.id || idx + 1;
@@ -53,8 +51,6 @@ export const QuestionNavigation = ({
               >
                 <span className="leading-none">{idx + 1}</span>
               </button>
-
-              {/* Explicit Checkmark Badge Mark for Answered Questions */}
               {isAnswered && (
                 <span
                   className="absolute -top-1 -right-1 bg-emerald-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-extrabold shadow-xs border border-white z-10 pointer-events-none"

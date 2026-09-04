@@ -1,9 +1,5 @@
 import Button from '../common/Button';
 import { generateWhatsAppMessage, generateWhatsAppUrl } from '../../utils/whatsapp';
-
-/**
- * WhatsAppButton Component displaying direct WhatsApp link CTA & Retake test action
- */
 export const WhatsAppButton = ({
   userSession,
   quizResult,

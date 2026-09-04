@@ -17,23 +17,19 @@ export const QuestionTimer = ({
     urgencyClass,
     pulseRing,
   } = useTimer({ duration, onTimeUp, isActive });
-
-  // Answered questions progress calculation
   const answeredCount = Object.keys(answers).filter(
     (k) => answers[k] !== undefined && answers[k] !== null
   ).length;
   const progressPercent = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
 
-  // SVG circle ring math
+  // SVG circle 
   const radius = 46;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (remainingPercent / 100) * circumference;
 
   return (
     <div className="flex flex-row md:flex-col items-center justify-between gap-4 md:gap-3.5 w-full">
-      {/* Circular Countdown Ring */}
       <div className={`relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 shrink-0 flex items-center justify-center ${pulseRing}`}>
-        {/* Background circle fill */}
         <div
           className="absolute inset-0 rounded-full"
           style={{ background: ringBg }}
@@ -74,9 +70,8 @@ export const QuestionTimer = ({
         </div>
       </div>
 
-      {/* Right Details on Mobile / Stacked Details on Desktop */}
+      {/* Right Details on Mobile */}
       <div className="flex flex-col items-center gap-2 md:gap-3 flex-grow min-w-0 w-full">
-        {/* Timer Urgency Status Badge */}
         <div className={`inline-flex items-center text-[10px] md:text-[11px] font-bold px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border ${urgencyClass}`}>
           {urgencyLabel}
         </div>

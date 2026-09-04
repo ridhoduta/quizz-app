@@ -1,6 +1,3 @@
-/**
- * Reusable Progress Bar Component with smooth transition
- */
 export const ProgressBar = ({
   progress = 0,
   label,

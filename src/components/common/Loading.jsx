@@ -1,6 +1,3 @@
-/**
- * Loading spinner component for fallback / data fetching states
- */
 export const Loading = ({ text = 'Memuat data...', fullScreen = false }) => {
   const content = (
     <div className="flex flex-col items-center justify-center p-8 gap-3">

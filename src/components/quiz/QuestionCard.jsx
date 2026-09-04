@@ -1,10 +1,5 @@
 import OptionButton from './OptionButton';
-
 const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
-
-/**
- * QuestionCard Component — clean focus variant for quiz
- */
 export const QuestionCard = ({
   questionNumber,
   totalQuestions,

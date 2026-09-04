@@ -1,6 +1,3 @@
-/**
- * Reusable Form Input & Select Component with Label, Focus, and Error styling
- */
 export const Input = ({
   id,
   name,

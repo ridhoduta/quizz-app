@@ -1,6 +1,3 @@
-/**
- * Error/Alert Message Banner Component
- */
 export const ErrorMessage = ({
   title = 'Terjadi Kesalahan',
   message,
