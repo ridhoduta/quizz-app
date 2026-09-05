@@ -45,7 +45,6 @@ Mohon informasi jadwal & pendaftaran selanjutnya. Terima kasih!`;
  * @returns {string} Full wa.me URL
  */
 export const generateWhatsAppUrl = (phoneNumber = DEFAULT_ADMIN_PHONE, message = '') => {
-  // Format phone number to international format (62xxxx)
   let cleaned = String(phoneNumber).replace(/[^0-9]/g, '');
   if (cleaned.startsWith('0')) {
     cleaned = '62' + cleaned.slice(1);

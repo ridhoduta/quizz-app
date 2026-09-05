@@ -6,10 +6,9 @@ Aplikasi web placement test berbasis React untuk menguji kemampuan bahasa Inggri
 | ------------------ | -------------------------------------------- |
 | **Nama Aplikasi**  | BunnySpeak Course                       |
 | **Deskripsi**      | Multi-step placement test engine untuk pengukuran kemampuan bahasa Inggris |
-| **Developer**      | Ridho                                        |
-| **Role**           | Fullstack Developer (Frontend Focus)         |
+| **Developer**      | Ridho Duta Yuwana                                       |
 | **Teknologi**      | React 19, Vite 8, Tailwind CSS 4, React Router 7 |
-| **Periode**        | 2025                                         |
+| **URL**            | https://quizz-app-delta-five.vercel.app/     |
 | **Repository**     | https://github.com/ridho/quiz-app            |
 
 ---

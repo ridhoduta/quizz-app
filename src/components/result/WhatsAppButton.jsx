@@ -4,7 +4,7 @@ export const WhatsAppButton = ({
   userSession,
   quizResult,
   onRetakeTest,
-  adminPhone = '6281234567890',
+  adminPhone = '6282246387673',
 }) => {
   const message = generateWhatsAppMessage(userSession, quizResult);
   const waUrl = generateWhatsAppUrl(adminPhone, message);
