@@ -13,9 +13,9 @@ export const CtaSection = ({ onStartTest }) => {
   };
 
   return (
-    <section className="w-full bg-[#22437C] text-white py-16 md:py-20 relative overflow-hidden">
+    <section className="w-full bg-primary-container text-white py-16 md:py-20 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#A9213F]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           {/* Left Column*/}
@@ -43,14 +43,14 @@ export const CtaSection = ({ onStartTest }) => {
             <button
               type="button"
               onClick={handleStart}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#B12844] text-[#ffff] hover:bg-slate-100 text-base md:text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all active:scale-95 font-bold text-center cursor-pointer hover:text-[#012c64]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary text-surface-container-lowest hover:bg-slate-100 text-base md:text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all active:scale-95 font-bold text-center cursor-pointer hover:text-primary"
             >
               <span>Mulai Placement Test</span>
               <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
             </button>
             <span className="flex items-center gap-1.5 mt-3 text-white/90 text-xs md:text-[13px]">
               <span className="material-symbols-outlined text-[16px] text-white">verified_user</span>
-              Ketahui levelmu secara objektif dan temukan program yang tepat 
+              Ketahui levelmu secara objektif dan temukan program yang tepat
             </span>
           </div>
         </div>

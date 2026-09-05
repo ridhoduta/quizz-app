@@ -19,12 +19,12 @@ export const ResultCard = ({ quizResult }) => {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      <div className="bg-white rounded-2xl border border-[#C4C6D1] ambient-shadow p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
+      <div className="bg-white rounded-2xl border border-outline-variant ambient-shadow p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
             backgroundImage:
-              'radial-gradient(circle at center, #22437C 1px, transparent 1px)',
+              'radial-gradient(circle at center, var(--color-primary-container) 1px, transparent 1px)',
             backgroundSize: '20px 20px',
           }}
         />
@@ -38,7 +38,7 @@ export const ResultCard = ({ quizResult }) => {
               cy="50"
               r={radius}
               fill="none"
-              stroke="#E5E7EB"
+              stroke="var(--color-gray-e5e7)"
               strokeWidth="8"
             />
             {/* Progress Fill Circle */}
@@ -47,7 +47,7 @@ export const ResultCard = ({ quizResult }) => {
               cy="50"
               r={radius}
               fill="none"
-              stroke="#22437C"
+              stroke="var(--color-primary-container)"
               strokeWidth="8"
               strokeDasharray={circumference}
               strokeDashoffset={dashOffset}
@@ -56,17 +56,17 @@ export const ResultCard = ({ quizResult }) => {
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl md:text-5xl font-extrabold text-[#22437C]">
+            <span className="text-4xl md:text-5xl font-extrabold text-primary-container">
               {score}%
             </span>
           </div>
         </div>
 
         {/* Level Title & Description */}
-        <h2 className="text-2xl md:text-3xl font-bold text-[#22437C] mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-primary-container mb-2">
           {level}
         </h2>
-        <p className="text-sm md:text-base text-[#434750] max-w-lg leading-relaxed">
+        <p className="text-sm md:text-base text-on-surface-variant max-w-lg leading-relaxed">
           {levelDescriptions[level] || levelDescriptions.Beginner}
         </p>
       </div>
@@ -74,36 +74,36 @@ export const ResultCard = ({ quizResult }) => {
       {/* Statistics Cards Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Stat 1: Correct Count */}
-        <div className="bg-white rounded-xl border border-[#C4C6D1] ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
-          <span className="material-symbols-outlined text-[#22437C] text-[32px] mb-1">
+        <div className="bg-white rounded-xl border border-outline-variant ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
+          <span className="material-symbols-outlined text-primary-container text-[32px] mb-1">
             task_alt
           </span>
-          <span className="text-xl font-bold text-[#151C27] mb-0.5">
+          <span className="text-xl font-bold text-on-surface mb-0.5">
             {correctCount} / {totalQuestions}
           </span>
-          <span className="text-xs text-[#434750]">Jawaban Benar</span>
+          <span className="text-xs text-on-surface-variant">Jawaban Benar</span>
         </div>
 
         {/* Stat 2: Score % */}
-        <div className="bg-white rounded-xl border border-[#C4C6D1] ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
-          <span className="material-symbols-outlined text-[#22437C] text-[32px] mb-1">
+        <div className="bg-white rounded-xl border border-outline-variant ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
+          <span className="material-symbols-outlined text-primary-container text-[32px] mb-1">
             percent
           </span>
-          <span className="text-xl font-bold text-[#151C27] mb-0.5">
+          <span className="text-xl font-bold text-on-surface mb-0.5">
             {score}%
           </span>
-          <span className="text-xs text-[#434750]">Skor Akhir</span>
+          <span className="text-xs text-on-surface-variant">Skor Akhir</span>
         </div>
 
         {/* Stat 3: Level */}
-        <div className="bg-white rounded-xl border border-[#C4C6D1] ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
-          <span className="material-symbols-outlined text-[#22437C] text-[32px] mb-1">
+        <div className="bg-white rounded-xl border border-outline-variant ambient-shadow p-5 flex flex-col items-center justify-center text-center hover-shadow">
+          <span className="material-symbols-outlined text-primary-container text-[32px] mb-1">
             school
           </span>
-          <span className="text-xl font-bold text-[#151C27] mb-0.5">
+          <span className="text-xl font-bold text-on-surface mb-0.5">
             {level}
           </span>
-          <span className="text-xs text-[#434750]">Tingkat Kemampuan</span>
+          <span className="text-xs text-on-surface-variant">Tingkat Kemampuan</span>
         </div>
       </div>
     </div>

@@ -18,15 +18,15 @@ export const Button = ({
 
   const variantClasses = {
     primary:
-      'bg-[#22437C] hover:bg-[#1A3462] text-white shadow-sm hover:shadow-md focus-visible:ring-[#22437C]',
+      'bg-primary-container hover:bg-primary-container-hover text-surface-container-lowest shadow-sm hover:shadow-md focus-visible:ring-primary-container',
     secondary:
-      'bg-transparent border border-[#22437C] text-[#22437C] hover:bg-[#F0F3FF] focus-visible:ring-[#22437C]',
+      'bg-transparent border border-primary-container text-primary-container hover:bg-surface-container-low focus-visible:ring-primary-container',
     accent:
-      'bg-[#A9213F] hover:bg-[#8F1A33] text-white shadow-sm hover:shadow-md focus-visible:ring-[#A9213F]',
+      'bg-brand-accent hover:bg-brand-accent-hover text-surface-container-lowest shadow-sm hover:shadow-md focus-visible:ring-brand-accent',
     outline:
-      'border border-[#C4C6D1] bg-white text-[#151C27] hover:bg-[#F9F9FF] focus-visible:ring-[#22437C]',
+      'border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface focus-visible:ring-primary-container',
     ghost:
-      'bg-transparent text-[#434750] hover:text-[#22437C] hover:bg-[#F0F3FF] focus-visible:ring-[#22437C]',
+      'bg-transparent text-on-surface-variant hover:text-primary-container hover:bg-surface-container-low focus-visible:ring-primary-container',
   };
 
   const sizeClasses = {

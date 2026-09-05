@@ -46,56 +46,56 @@ export const BiodataPage = () => {
   }
 
   return (
-    <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
+    <div className="font-sans antialiased text-on-surface min-h-screen flex flex-col bg-background">
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center justify-center p-4 md:p-8 lg:p-10 my-4">
         <div className="w-full max-w-6xl mx-auto">
-          <div className="bg-white custom-shadow border border-[#C4C6D1] rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
+          <div className="bg-surface-container-lowest custom-shadow border border-outline-variant rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
             {/* Left Side */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-[#F0F3FF] via-[#E7EEFE] to-[#E2E8F8] p-6 md:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#C4C6D1] relative overflow-hidden">
+            <div className="lg:col-span-5 bg-gradient-to-br from-primary-subtle via-blue-lightest2 to-surface-container-high p-6 md:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-outline-variant relative overflow-hidden">
               {/* Top Badges & Welcome */}
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[#C4C6D1]/60 text-[#22437C] text-xs font-semibold px-3.5 py-1.5 rounded-full mb-4 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-[#22437C] animate-pulse" />
+                <div className="inline-flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant/60 text-primary-container text-xs font-semibold px-3.5 py-1.5 rounded-full mb-4 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
                   <span>Langkah 1 dari 3: Lengkapi Biodata</span>
                 </div>
 
-                <h2 className="text-2xl md:text-3xl text-[#012C64] font-bold tracking-tight mb-3">
+                <h2 className="text-2xl md:text-3xl text-primary font-bold tracking-tight mb-3">
                   Halo, Semangat Memulai Tes!
                 </h2>
 
-                <p className="text-sm md:text-base text-[#434750] leading-relaxed mb-6">
+                <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-6">
                   Isi informasi diri kamu dengan lengkap sebelum memulai placement test. Hasil analisis akan disesuaikan khusus untuk level kemampuanmu!
                 </p>
 
                 {/* Key Benefits / Checklist */}
-                <div className="space-y-3 bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-[#C4C6D1]/50 shadow-sm">
+                <div className="space-y-3 bg-surface-container-lowest/80 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/50 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-full bg-[#22437C]/10 flex items-center justify-center flex-shrink-0 text-[#22437C]">
+                    <div className="w-7 h-7 rounded-full bg-primary-container/10 flex items-center justify-center flex-shrink-0 text-primary-container">
                       <span className="material-symbols-outlined text-[18px]">schedule</span>
                     </div>
-                    <span className="text-xs sm:text-sm text-[#151C27] font-medium">
+                    <span className="text-xs sm:text-sm text-on-surface font-medium">
                       Hanya butuh 10-15 menit pengerjaan
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-full bg-[#22437C]/10 flex items-center justify-center flex-shrink-0 text-[#22437C]">
+                    <div className="w-7 h-7 rounded-full bg-primary-container/10 flex items-center justify-center flex-shrink-0 text-primary-container">
                       <span className="material-symbols-outlined text-[18px]">verified</span>
                     </div>
-                    <span className="text-xs sm:text-sm text-[#151C27] font-medium">
+                    <span className="text-xs sm:text-sm text-on-surface font-medium">
                       Lihat Hasil analisis kemampuanmu secara instan
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-full bg-[#22437C]/10 flex items-center justify-center flex-shrink-0 text-[#22437C]">
+                    <div className="w-7 h-7 rounded-full bg-primary-container/10 flex items-center justify-center flex-shrink-0 text-primary-container">
                       <span className="material-symbols-outlined text-[18px]">military_tech</span>
                     </div>
-                    <span className="text-xs sm:text-sm text-[#151C27] font-medium">
+                    <span className="text-xs sm:text-sm text-on-surface font-medium">
                       100% Gratis tanpa biaya tersembunyi
                     </span>
                   </div>
@@ -115,16 +115,16 @@ export const BiodataPage = () => {
             </div>
 
             {/* Right Side: Form Inputs */}
-            <div className="lg:col-span-7 p-6 md:p-8 lg:p-10 flex flex-col justify-center bg-white">
+            <div className="lg:col-span-7 p-6 md:p-8 lg:p-10 flex flex-col justify-center bg-surface-container-lowest">
               <div className="max-w-xl mx-auto w-full">
                 <div className="mb-6">
-                  <span className="inline-block text-xs font-semibold text-[#22437C] uppercase tracking-wider mb-1">
+                  <span className="inline-block text-xs font-semibold text-primary-container uppercase tracking-wider mb-1">
                     Formulir Pendaftaran
                   </span>
-                  <h1 className="text-2xl md:text-3xl font-bold text-[#151C27] mb-1.5">
+                  <h1 className="text-2xl md:text-3xl font-bold text-on-surface mb-1.5">
                     Lengkapi Biodata Diri
                   </h1>
-                  <p className="text-sm md:text-base text-[#434750]">
+                  <p className="text-sm md:text-base text-on-surface-variant">
                     Masukkan informasi diri Anda sebelum memulai placement test.
                   </p>
                 </div>
@@ -198,11 +198,11 @@ export const BiodataPage = () => {
                   />
 
                   {/* Actions */}
-                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-[#C4C6D1] mt-6">
+                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-outline-variant mt-6">
                     <button
                       type="button"
                       onClick={() => navigate('/')}
-                      className="w-full sm:w-auto px-6 py-3 border border-[#22437C] text-[#22437C] text-sm font-semibold rounded-xl hover:bg-[#F0F3FF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full sm:w-auto px-6 py-3 border border-primary-container text-primary-container text-sm font-semibold rounded-xl hover:bg-primary-subtle transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                       <span>Kembali ke Beranda</span>

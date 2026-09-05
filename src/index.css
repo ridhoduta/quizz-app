@@ -1,11 +1,14 @@
-/* Design System & Custom Utility Classes */
+@import "tailwindcss";
 
-:root {
+@theme {
   --color-primary: #012c64;
   --color-primary-container: #22437c;
+  --color-primary-container-hover: #1a3462;
   --color-secondary: #b12844;
   --color-secondary-container: #ff637b;
   --color-brand-accent: #a9213f;
+  --color-brand-accent-hover: #8f1a33;
+  --color-brand-accent-dark: #8f072f;
   --color-background: #fefcff;
   --color-surface: #f9f9ff;
   --color-surface-container-lowest: #ffffff;
@@ -18,6 +21,11 @@
   --color-outline-variant: #c4c6d1;
   --color-error: #ba1a1a;
   --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --shadow-custom: 0px 2px 4px rgba(34, 67, 124, 0.05);
+  --shadow-card: 0px 2px 8px rgba(34, 67, 124, 0.08);
+  --shadow-ambient: 0px 4px 12px rgba(34, 67, 124, 0.06);
 }
 
 body {
@@ -62,21 +70,99 @@ body {
   transform: translateY(-2px);
 }
 
-/* Input States */
-.input-focus:focus {
-  border-color: #22437c;
-  box-shadow: 0 0 0 2px rgba(34, 67, 124, 0.2);
-}
-
-.input-error {
-  border-color: #a9213f !important;
-}
-
-.input-error:focus {
-  box-shadow: 0 0 0 2px rgba(169, 33, 63, 0.2) !important;
-}
-
 /* Smooth Transitions */
 .transition-all-200 {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Additional Color Variables */
+:root {
+  --color-hero: #193566;
+  --color-gray-e5e7: #E5E7EB;
+  --color-pink-light: #ffe4e8;
+  --color-yellow-light: #FFF9E6;
+  --color-blue-light: #f4f7fd;
+  --color-blue-lightest: #f7f9fd;
+  --color-brand-accent-subtle: #ffe4e8;
+  --color-primary-subtle: #f0f3ff;
+  --color-primary-surface: #dce2f3;
+  --color-blue-gradient: #2e5aa8;
+  --color-gold: #FFD166;
+  --color-quiz-bg: #F1F4FB;
+  --color-gray-f9fafb: #F9FAFB;
+  --color-blue-lightest2: #e7eefe;
+  --color-blue-adc6ff: #adc6ff;
+  --color-brand-accent-deep: #8A1A32;
+}
+
+/* Color Utility Classes */
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.text-primary-container { color: var(--color-primary-container); }
+.bg-primary-container { background-color: var(--color-primary-container); }
+.bg-primary-container-hover { background-color: var(--color-primary-container-hover); }
+.text-primary-container-hover { color: var(--color-primary-container-hover); }
+.text-secondary { color: var(--color-secondary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.text-brand-accent { color: var(--color-brand-accent); }
+.bg-brand-accent { background-color: var(--color-brand-accent); }
+.text-brand-accent-hover { color: var(--color-brand-accent-hover); }
+.bg-brand-accent-hover { background-color: var(--color-brand-accent-hover); }
+.text-brand-accent-dark { color: var(--color-brand-accent-dark); }
+.bg-brand-accent-dark { background-color: var(--color-brand-accent-dark); }
+.text-background { color: var(--color-background); }
+.bg-background { background-color: var(--color-background); }
+.text-surface { color: var(--color-surface); }
+.bg-surface { background-color: var(--color-surface); }
+.bg-surface-container-lowest { background-color: var(--color-surface-container-lowest); }
+.text-surface-container-lowest { color: var(--color-surface-container-lowest); }
+.bg-surface-container-low { background-color: var(--color-surface-container-low); }
+.text-surface-container-low { color: var(--color-surface-container-low); }
+.bg-surface-container-high { background-color: var(--color-surface-container-high); }
+.text-surface-container-high { color: var(--color-surface-container-high); }
+.bg-surface-variant { background-color: var(--color-surface-variant); }
+.text-surface-variant { color: var(--color-surface-variant); }
+.text-on-surface { color: var(--color-on-surface); }
+.bg-on-surface { background-color: var(--color-on-surface); }
+.text-on-surface-variant { color: var(--color-on-surface-variant); }
+.bg-on-surface-variant { background-color: var(--color-on-surface-variant); }
+.text-outline { color: var(--color-outline); }
+.border-outline { border-color: var(--color-outline); }
+.text-outline-variant { color: var(--color-outline-variant); }
+.border-outline-variant { border-color: var(--color-outline-variant); }
+.text-error { color: var(--color-error); }
+.bg-error { background-color: var(--color-error); }
+.text-error-container { color: var(--color-error-container); }
+.bg-error-container { background-color: var(--color-error-container); }
+.text-on-error-container { color: var(--color-on-error-container); }
+.bg-on-error-container { background-color: var(--color-on-error-container); }
+
+/* Additional Color Utility Classes */
+.text-hero { color: var(--color-hero); }
+.bg-hero { background-color: var(--color-hero); }
+.text-gray-e5e7 { color: var(--color-gray-e5e7); }
+.bg-gray-e5e7 { background-color: var(--color-gray-e5e7); }
+.text-pink-light { color: var(--color-pink-light); }
+.bg-pink-light { background-color: var(--color-pink-light); }
+.text-yellow-light { color: var(--color-yellow-light); }
+.bg-yellow-light { background-color: var(--color-yellow-light); }
+.text-blue-light { color: var(--color-blue-light); }
+.bg-blue-light { background-color: var(--color-blue-light); }
+.text-blue-lightest { color: var(--color-blue-lightest); }
+.bg-blue-lightest { background-color: var(--color-blue-lightest); }
+.text-primary-subtle { color: var(--color-primary-subtle); }
+.bg-primary-subtle { background-color: var(--color-primary-subtle); }
+.text-primary-surface { color: var(--color-primary-surface); }
+.bg-primary-surface { background-color: var(--color-primary-surface); }
+.text-gold { color: var(--color-gold); }
+.bg-gold { background-color: var(--color-gold); }
+.text-quiz-bg { color: var(--color-quiz-bg); }
+.bg-quiz-bg { background-color: var(--color-quiz-bg); }
+.text-gray-f9fafb { color: var(--color-gray-f9fafb); }
+.bg-gray-f9fafb { background-color: var(--color-gray-f9fafb); }
+.text-blue-lightest2 { color: var(--color-blue-lightest2); }
+.bg-blue-lightest2 { background-color: var(--color-blue-lightest2); }
+.text-blue-adc6ff { color: var(--color-blue-adc6ff); }
+.bg-blue-adc6ff { background-color: var(--color-blue-adc6ff); }
+.text-brand-accent-deep { color: var(--color-brand-accent-deep); }
+.bg-brand-accent-deep { background-color: var(--color-brand-accent-deep); }

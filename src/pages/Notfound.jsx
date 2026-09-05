@@ -16,26 +16,26 @@ export const NotFound = () => {
   }, []);
 
   return (
-    <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#f9f9ff]">
+    <div className="font-sans antialiased text-on-surface min-h-screen flex flex-col bg-surface">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-[#C4C6D1]">
+      <header className="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-outline-variant">
         <div className="h-14 px-4 md:px-10 flex items-center justify-between gap-2 max-w-7xl mx-auto">
           <Link to="/" className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[28px] text-[#22437C] filled">
+            <span className="material-symbols-outlined text-[28px] text-primary-container filled">
               school
             </span>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-[#012C64] leading-tight">
+              <span className="text-sm font-bold text-primary leading-tight">
                 BunnySpeak Course
               </span>
-              <span className="text-[11px] text-[#434750] leading-none">
+              <span className="text-[11px] text-on-surface-variant leading-none">
                 Beranda
               </span>
             </div>
           </Link>
 
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#22437C] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
               <span className="material-symbols-outlined text-white text-[18px]">
                 person
               </span>
@@ -45,14 +45,14 @@ export const NotFound = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col w-full pt-14 pb-12 bg-[#f9f9ff]">
-        <div className="w-full max-w-[1040px] mx-auto px-4 md:px-10 py-8 flex flex-col items-center">
+      <main className="flex-1 flex flex-col w-full pt-14 pb-12 bg-surface">
+        <div className="w-full max-w-260 mx-auto px-4 md:px-10 py-8 flex flex-col items-center">
           {/* Hero Illustration & 404 Visual */}
           <div className="relative flex items-center justify-center my-2 select-none">
             {/* Background Ambient Aura */}
             <div
               aria-hidden="true"
-              className="absolute -inset-4 bg-[#e7eefe] rounded-full blur-2xl opacity-70"
+              className="absolute -inset-4 bg-blue-lightest2 rounded-full blur-2xl opacity-70"
             />
 
             {/* Illustration + SVG 404 */}
@@ -75,7 +75,7 @@ export const NotFound = () => {
               >
                 {/* First '4' */}
                 <text
-                  fill="#012c64"
+                  fill="var(--color-primary)"
                   fontFamily="Inter, sans-serif"
                   fontSize="120"
                   letterSpacing="-4"
@@ -89,10 +89,10 @@ export const NotFound = () => {
                 <g transform="translate(145, 15)">
                   {/* Outer Question Sheet */}
                   <rect
-                    fill="#ffffff"
+                    fill="var(--color-surface-container-lowest)"
                     height="85"
                     rx="6"
-                    stroke="#dce2f3"
+                    stroke="var(--color-surface-variant)"
                     strokeWidth="3"
                     width="60"
                     x="15"
@@ -100,7 +100,7 @@ export const NotFound = () => {
                   />
                   {/* Sheet dummy lines */}
                   <line
-                    stroke="#adc6ff"
+                    stroke="var(--color-blue-adc6ff)"
                     strokeLinecap="round"
                     strokeWidth="3"
                     x1="25"
@@ -109,7 +109,7 @@ export const NotFound = () => {
                     y2="28"
                   />
                   <line
-                    stroke="#dce2f3"
+                    stroke="var(--color-surface-variant)"
                     strokeLinecap="round"
                     strokeWidth="2.5"
                     x1="25"
@@ -118,7 +118,7 @@ export const NotFound = () => {
                     y2="40"
                   />
                   <line
-                    stroke="#dce2f3"
+                    stroke="var(--color-surface-variant)"
                     strokeLinecap="round"
                     strokeWidth="2.5"
                     x1="25"
@@ -127,45 +127,45 @@ export const NotFound = () => {
                     y2="52"
                   />
                   {/* Red Incorrect Indicator */}
-                  <circle cx="32" cy="72" fill="#ffdadb" r="5" />
+                  <circle cx="32" cy="72" fill="var(--color-error-container)" r="5" />
                   <path
                     d="M30 70L34 74M34 70L30 74"
-                    stroke="#b12844"
+                    stroke="var(--color-secondary)"
                     strokeLinecap="round"
                     strokeWidth="1.5"
                   />
                   {/* Radio options */}
-                  <circle cx="48" cy="72" fill="#e7eefe" r="4" />
-                  <circle cx="62" cy="72" fill="#e7eefe" r="4" />
+                  <circle cx="48" cy="72" fill="var(--color-blue-lightest2)" r="4" />
+                  <circle cx="62" cy="72" fill="var(--color-blue-lightest2)" r="4" />
                   {/* Magnifier Overlay */}
                   <g transform="translate(8, 6)">
                     <circle
                       cx="36"
                       cy="48"
-                      fill="#ffffff"
+                      fill="var(--color-surface-container-lowest)"
                       fillOpacity="0.85"
                       r="32"
-                      stroke="#22437c"
+                      stroke="var(--color-primary-container)"
                       strokeWidth="5"
                     />
                     <circle
                       cx="36"
                       cy="48"
-                      fill="#e7eefe"
+                      fill="var(--color-blue-lightest2)"
                       fillOpacity="0.35"
                       r="23"
                     />
                     {/* Crosshair inside lens */}
                     <path
                       d="M26 48H46M36 38V58"
-                      stroke="#b12844"
+                      stroke="var(--color-secondary)"
                       strokeLinecap="round"
                       strokeWidth="3"
                     />
-                    <circle cx="36" cy="48" fill="#b12844" r="4" />
+                    <circle cx="36" cy="48" fill="var(--color-secondary)" r="4" />
                     {/* Magnifier Handle */}
                     <line
-                      stroke="#22437c"
+                      stroke="var(--color-primary-container)"
                       strokeLinecap="round"
                       strokeWidth="7"
                       x1="60"
@@ -174,7 +174,7 @@ export const NotFound = () => {
                       y2="96"
                     />
                     <line
-                      stroke="#adc6ff"
+                      stroke="var(--color-blue-adc6ff)"
                       strokeLinecap="round"
                       strokeWidth="2"
                       x1="61"
@@ -187,7 +187,7 @@ export const NotFound = () => {
 
                 {/* Second '4' */}
                 <text
-                  fill="#012c64"
+                  fill="var(--color-primary)"
                   fontFamily="Inter, sans-serif"
                   fontSize="120"
                   letterSpacing="-4"
@@ -199,7 +199,7 @@ export const NotFound = () => {
 
                 {/* Floating CEFR badge */}
                 <rect
-                  fill="#ff637b"
+                  fill="var(--color-secondary-container)"
                   height="22"
                   rx="11"
                   width="56"
@@ -212,10 +212,10 @@ export const NotFound = () => {
 
           {/* Editorial Error Copy */}
           <div className="text-center max-w-2xl mt-4 mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#012C64] tracking-tight mb-3">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary tracking-tight mb-3">
               Oops! Sepertinya Kamu Keluar dari Jalur Tes
             </h1>
-            <p className="text-base text-[#434750] leading-relaxed">
+            <p className="text-base text-on-surface-variant leading-relaxed">
               Halaman yang kamu cari telah dipindahkan, tautannya salah, atau
               belum tersedia. Jangan biarkan proses evaluasi kemampuan bahasa
               Inggrismu terhenti di sini.
@@ -227,7 +227,7 @@ export const NotFound = () => {
             {/* Primary CTA */}
             <Link
               to="/"
-              className="w-full sm:flex-1 min-h-[48px] px-6 py-3 rounded-lg bg-[#012C64] hover:bg-[#22437C] text-white text-sm font-medium flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all duration-200"
+              className="w-full sm:flex-1 min-h-21 px-6 py-3 rounded-lg bg-primary hover:bg-primary-container text-white text-sm font-medium flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all duration-200"
             >
               <span className="material-symbols-outlined text-[20px]">
                 home
@@ -239,7 +239,7 @@ export const NotFound = () => {
             <button
               type="button"
               onClick={() => navigate("/biodata")}
-              className="w-full sm:flex-1 min-h-[48px] px-6 py-3 rounded-lg bg-[#b12844] hover:bg-[#8f072f] text-white text-sm font-medium flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="w-full sm:flex-1 min-h-12 px-6 py-3 rounded-lg bg-secondary hover:bg-brand-accent-dark text-white text-sm font-medium flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
               <span className="material-symbols-outlined text-[20px]">
                 play_circle
@@ -252,7 +252,7 @@ export const NotFound = () => {
           <div className="mb-8">
             <a
               href="mailto:support@ept.cakap.com"
-              className="inline-flex items-center gap-1.5 text-[#b12844] hover:text-[#8f072f] text-sm font-medium group transition-colors"
+              className="inline-flex items-center gap-1.5 text-secondary hover:text-brand-accent-dark text-sm font-medium group transition-colors"
             >
               <span className="material-symbols-outlined text-[18px]">
                 support_agent
@@ -267,10 +267,10 @@ export const NotFound = () => {
           </div>
 
           {/* Diagnostic Meta */}
-          <div className="mt-8 text-center flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-[#747781]">
+          <div className="mt-8 text-center flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-outline">
             <span>
               Status:{" "}
-              <strong className="font-medium text-[#151C27]">
+              <strong className="font-medium text-on-surface">
                 HTTP 404 Route Not Found
               </strong>
             </span>
@@ -281,17 +281,17 @@ export const NotFound = () => {
       </main>
 
       {/* Footer */}
-      <footer className="w-full px-4 py-4 flex flex-col items-center gap-2 text-center bg-[#f0f3ff]/60 border-t border-[#C4C6D1]">
-        <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-[#434750]">
-          <a href="#" className="hover:text-[#22437C] transition-colors py-1">
+      <footer className="w-full px-4 py-4 flex flex-col items-center gap-2 text-center bg-primary-subtle/60 border-t border-outline-variant">
+        <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-on-surface-variant">
+          <a href="#" className="hover:text-primary-container transition-colors py-1">
             Bantuan
           </a>
-          <span className="text-[#C4C6D1]">•</span>
-          <a href="#" className="hover:text-[#22437C] transition-colors py-1">
+          <span className="text-outline-variant">•</span>
+          <a href="#" className="hover:text-primary-container transition-colors py-1">
             Privasi
           </a>
-          <span className="text-[#C4C6D1]">•</span>
-          <a href="#" className="hover:text-[#22437C] transition-colors py-1">
+          <span className="text-outline-variant">•</span>
+          <a href="#" className="hover:text-primary-container transition-colors py-1">
             Syarat &amp; Ketentuan
           </a>
         </div>

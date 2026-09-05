@@ -12,11 +12,23 @@ export const QuestionTimer = ({
     remainingPercent,
     ringColor,
     ringBg,
-    textColor,
+    level,
     urgencyLabel,
-    urgencyClass,
     pulseRing,
   } = useTimer({ duration, onTimeUp, isActive });
+
+  const timerTextClasses = {
+    critical: 'text-error',
+    warning: 'text-amber-600',
+    normal: 'text-emerald-600',
+  };
+
+  const timerBadgeClasses = {
+    critical: 'text-error bg-error-container/30 border border-error-container',
+    warning: 'text-amber-700 bg-amber-50 border border-amber-200',
+    normal: 'text-emerald-700 bg-emerald-50 border border-emerald-200',
+  };
+
   const answeredCount = Object.keys(answers).filter(
     (k) => answers[k] !== undefined && answers[k] !== null
   ).length;
@@ -43,7 +55,7 @@ export const QuestionTimer = ({
           <circle
             cx="50" cy="50" r={radius}
             fill="none"
-            stroke="#E5E7EB"
+            className="stroke-surface-container-high"
             strokeWidth="6"
           />
           {/* Progress */}
@@ -61,10 +73,10 @@ export const QuestionTimer = ({
 
         {/* Center Content */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center">
-          <span className={`font-mono text-xl sm:text-2xl md:text-3xl font-extrabold leading-none tracking-tight ${textColor}`}>
+          <span className={`font-mono text-xl sm:text-2xl md:text-3xl font-extrabold leading-none tracking-tight ${timerTextClasses[level] || 'text-emerald-600'}`}>
             {formattedTime}
           </span>
-          <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold mt-0.5 md:mt-1 uppercase tracking-wider">
+          <span className="text-[9px] md:text-[10px] text-outline font-semibold mt-0.5 md:mt-1 uppercase tracking-wider">
             Sisa Waktu
           </span>
         </div>
@@ -72,20 +84,20 @@ export const QuestionTimer = ({
 
       {/* Right Details on Mobile */}
       <div className="flex flex-col items-center gap-2 md:gap-3 flex-grow min-w-0 w-full">
-        <div className={`inline-flex items-center text-[10px] md:text-[11px] font-bold px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border ${urgencyClass}`}>
+        <div className={`inline-flex items-center text-[10px] md:text-[11px] font-bold px-2.5 py-0.5 md:px-3 md:py-1 rounded-full ${timerBadgeClasses[level] || 'text-emerald-700 bg-emerald-50 border border-emerald-200'}`}>
           {urgencyLabel}
         </div>
 
         {/* Answered Questions Progress */}
-        <div className="w-full bg-[#F0F4FF] border border-[#C4D0F0] rounded-xl p-2.5 md:p-3 text-center">
-          <p className="text-[11px] md:text-xs text-[#434750] font-medium">Soal Terjawab</p>
-          <p className="text-xl md:text-2xl font-extrabold text-[#22437C] leading-tight">
+        <div className="w-full bg-surface-container-low border border-surface-variant rounded-xl p-2.5 md:p-3 text-center">
+          <p className="text-[11px] md:text-xs text-on-surface-variant font-medium">Soal Terjawab</p>
+          <p className="text-xl md:text-2xl font-extrabold text-primary-container leading-tight">
             {answeredCount}
-            <span className="text-xs md:text-base font-medium text-gray-500"> / {totalQuestions}</span>
+            <span className="text-xs md:text-base font-medium text-outline"> / {totalQuestions}</span>
           </p>
-          <div className="mt-1.5 md:mt-2 w-full bg-gray-200 rounded-full h-1.5 md:h-2 overflow-hidden">
+          <div className="mt-1.5 md:mt-2 w-full bg-surface-container-high rounded-full h-1.5 md:h-2 overflow-hidden">
             <div
-              className="h-full bg-[#22437C] rounded-full transition-all duration-500"
+              className="h-full bg-primary-container rounded-full transition-all duration-500"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

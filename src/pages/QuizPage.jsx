@@ -110,16 +110,16 @@ export const QuizPage = () => {
   const unansweredCount = totalQuestions - answeredCount;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F1F4FB] font-sans antialiased text-[#151C27]">
+    <div className="min-h-screen flex flex-col bg-quiz-bg font-sans antialiased text-on-surface">
       {/* ── Top Minimal Bar ── */}
       <div className="bg-white border-b border-gray-200 px-3 sm:px-4 md:px-8 py-2.5 sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
           {/* Brand + mode */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <span className="material-symbols-outlined text-[#22437C] text-2xl filled">
+            <span className="material-symbols-outlined text-primary-container text-2xl filled">
               school
             </span>
-            <span className="font-extrabold text-[#012C64] text-xs sm:text-sm md:text-base hidden sm:block">
+            <span className="font-extrabold text-primary text-xs sm:text-sm md:text-base hidden sm:block">
               BunnySpeak Course
             </span>
             <span className="text-xs text-gray-400 hidden md:block">
@@ -129,7 +129,7 @@ export const QuizPage = () => {
 
           {/* Center: question counter */}
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-bold text-[#22437C] bg-blue-50 border border-blue-200 px-2.5 sm:px-3 py-1 rounded-full">
+            <span className="text-xs font-bold text-primary-container bg-blue-50 border border-blue-200 px-2.5 sm:px-3 py-1 rounded-full">
               Soal {currentIndex + 1} / {totalQuestions}
             </span>
           </div>
@@ -138,7 +138,7 @@ export const QuizPage = () => {
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden flex items-center gap-1 text-xs font-bold text-[#22437C] bg-blue-50 border border-blue-200 px-2.5 py-1.5 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer"
+              className="lg:hidden flex items-center gap-1 text-xs font-bold text-primary-container bg-blue-50 border border-blue-200 px-2.5 py-1.5 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer"
               aria-label="Buka Navigasi Soal"
               title="Daftar Soal"
             >
@@ -163,15 +163,15 @@ export const QuizPage = () => {
       </div>
 
       {/* --- Main Layout ---*/}
-      <div className="flex-grow w-full max-w-7xl mx-auto px-3 md:px-6 py-4 md:py-8 grid grid-cols-1 lg:grid-cols-[1fr_300px] lg:grid-rows-[auto_1fr] items-start gap-4 md:gap-5">
+      <div className="grow w-full max-w-7xl mx-auto px-3 md:px-6 py-4 md:py-8 grid grid-cols-1 lg:grid-cols-[1fr_300px] lg:grid-rows-[auto_1fr] items-start gap-4 md:gap-5">
         {/* --1. TIMER (Mobile: Top above question, Desktop: Right Column Top) --- */}
-        <div className="order-1 lg:order-none lg:col-start-2 lg:row-start-1 bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-5 flex flex-col items-center gap-3 transition-all duration-300 w-full">
+        <div className="order-1 lg:order-0 lg:col-start-2 lg:row-start-1 bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-5 flex flex-col items-center gap-3 transition-all duration-300 w-full">
           <div className="flex items-center justify-between border-b border-gray-100 pb-2 w-full">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#22437C] text-base">
+              <span className="material-symbols-outlined text-primary-container text-base">
                 timer
               </span>
-              <span className="text-xs font-bold text-[#012C64] uppercase tracking-wide">
+              <span className="text-xs font-bold text-primary uppercase tracking-wide">
                 Sisa Waktu Ujian
               </span>
             </div>
@@ -188,7 +188,7 @@ export const QuizPage = () => {
         </div>
 
         {/* ── 2. QUESTION AREA (Mobile: Middle, Desktop: Left Column) ── */}
-        <div className="order-2 lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col gap-4 min-w-0">
+        <div className="order-2 lg:order-0 lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col gap-4 min-w-0">
           {/* Question Card */}
           <QuestionCard
             questionNumber={currentIndex + 1}
@@ -208,7 +208,7 @@ export const QuizPage = () => {
               type="button"
               onClick={previousQuestion}
               disabled={currentIndex === 0}
-              className="flex-1 min-h-[42px] flex items-center justify-center gap-1 bg-gray-100 hover:bg-gray-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 text-gray-700 font-bold text-xs px-3 py-2 rounded-xl transition-all cursor-pointer"
+              className="flex-1 min-h-10.5 flex items-center justify-center gap-1 bg-gray-100 hover:bg-gray-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 text-gray-700 font-bold text-xs px-3 py-2 rounded-xl transition-all cursor-pointer"
             >
               <span className="material-symbols-outlined text-sm">
                 arrow_back
@@ -219,7 +219,7 @@ export const QuizPage = () => {
             {/* <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="flex-1 min-h-[42px] flex items-center justify-center gap-1.5 bg-[#22437C]/10 hover:bg-[#22437C]/20 active:scale-95 text-[#22437C] font-extrabold text-xs px-3 py-2 rounded-xl border border-[#22437C]/20 transition-all cursor-pointer"
+              className="flex-1 min-h-[42px] flex items-center justify-center gap-1.5 bg-primary-container/10 hover:bg-primary-container/20 active:scale-95 text-primary-container font-extrabold text-xs px-3 py-2 rounded-xl border border-primary-container/20 transition-all cursor-pointer"
             >
               <span className="material-symbols-outlined text-sm">grid_view</span>
               <span>Navigasi Soal</span>
@@ -229,7 +229,7 @@ export const QuizPage = () => {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="flex-1 min-h-[42px] flex items-center justify-center gap-1 bg-[#A9213F] hover:bg-[#8A1A32] active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl transition-all shadow-xs cursor-pointer"
+                className="flex-1 min-h-10.5 flex items-center justify-center gap-1 bg-brand-accent hover:bg-brand-accent-deep active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl transition-all shadow-xs cursor-pointer"
               >
                 <span>Kumpulkan</span>
                 <span className="material-symbols-outlined text-sm">check</span>
@@ -238,7 +238,7 @@ export const QuizPage = () => {
               <button
                 type="button"
                 onClick={nextQuestion}
-                className="flex-1 min-h-[42px] flex items-center justify-center gap-1 bg-[#22437C] hover:bg-[#1a3463] active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl transition-all shadow-xs cursor-pointer"
+                className="flex-1 min-h-10.5 flex items-center justify-center gap-1 bg-primary-container hover:bg-primary-container-hover active:scale-95 text-white font-bold text-xs px-3 py-2 rounded-xl transition-all shadow-xs cursor-pointer"
               >
                 <span>Berikutnya</span>
                 <span className="material-symbols-outlined text-sm">
@@ -265,13 +265,13 @@ export const QuizPage = () => {
               fixed top-0 right-0 bottom-0 z-50 w-80 max-w-[85vw] bg-white p-5 shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out
               ${isSidebarOpen ? "translate-x-0" : "translate-x-full"}
               lg:static lg:z-auto lg:w-full lg:max-w-none lg:shadow-none lg:p-0 lg:overflow-visible lg:translate-x-0
-              order-3 lg:order-none lg:col-start-2 lg:row-start-2
+              order-3 lg:order-0 lg:col-start-2 lg:row-start-2
             `}
           >
             {/* Mobile Sidebar Header */}
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 lg:hidden">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[#22437C] text-xl">
+                <span className="material-symbols-outlined text-primary-container text-xl">
                   grid_view
                 </span>
                 <h3 className="font-bold text-gray-900 text-sm">

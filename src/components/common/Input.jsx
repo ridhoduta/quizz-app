@@ -18,21 +18,21 @@ export const Input = ({
   const errorId = error && inputId ? `${inputId}-error` : undefined;
 
   const baseInputStyle =
-    'w-full bg-[#F9FAFB] border rounded-lg px-4 py-3 text-base text-[#151C27] placeholder:text-[#C4C6D1] focus:outline-none transition-colors duration-150';
+    'w-full bg-surface border rounded-lg px-4 py-3 text-base text-on-surface placeholder:text-outline-variant focus:outline-none transition-colors duration-150';
   
   const borderStyle = error
-    ? 'border-[#A9213F] focus:border-[#A9213F] focus:ring-1 focus:ring-[#A9213F]'
-    : 'border-[#E5E7EB] focus:border-[#22437C] focus:ring-1 focus:ring-[#22437C]';
+    ? 'border-brand-accent focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20'
+    : 'border-surface-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20';
 
   return (
     <div className={`w-full ${className}`}>
       {label && (
         <label
           htmlFor={inputId}
-          className="block text-sm font-medium text-[#151C27] mb-1.5"
+          className="block text-sm font-medium text-on-surface mb-1.5"
         >
           {label}
-          {required && <span className="text-[#A9213F] ml-1" aria-hidden="true">*</span>}
+          {required && <span className="text-brand-accent ml-1" aria-hidden="true">*</span>}
         </label>
       )}
 
@@ -60,7 +60,7 @@ export const Input = ({
               </option>
             ))}
           </select>
-          <span className="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-[#747781] pointer-events-none text-[20px]">
+          <span className="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">
             expand_more
           </span>
         </div>
@@ -81,7 +81,7 @@ export const Input = ({
       )}
 
       {error && (
-        <p id={errorId} className="mt-1.5 text-xs text-[#A9213F] flex items-center gap-1" role="alert">
+        <p id={errorId} className="mt-1.5 text-xs text-brand-accent flex items-center gap-1" role="alert">
           <span className="material-symbols-outlined text-[16px]">error</span>
           <span>{error}</span>
         </p>

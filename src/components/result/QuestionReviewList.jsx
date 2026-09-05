@@ -34,7 +34,7 @@ export const QuestionReviewList = ({ userAnswers = {} }) => {
   ];
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+    <div className="bg-surface-container-lowest border border-gray-200 rounded-2xl overflow-hidden">
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-5 py-4 border-b border-gray-200">

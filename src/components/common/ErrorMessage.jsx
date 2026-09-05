@@ -6,9 +6,9 @@ export const ErrorMessage = ({
 }) => {
   return (
     <div
-      className={`bg-[#FFDAD6]/50 border border-[#FFDAD6] text-[#93000A] p-4 rounded-lg flex items-start gap-3 ${className}`}
+      className={`bg-error-container/50 border border-error-container text-on-error-container p-4 rounded-lg flex items-start gap-3 ${className}`}
     >
-      <span className="material-symbols-outlined text-[24px] text-[#A9213F] shrink-0">
+      <span className="material-symbols-outlined text-[24px] text-brand-accent shrink-0">
         error
       </span>
       <div className="flex-1">
@@ -18,7 +18,7 @@ export const ErrorMessage = ({
       {onRetry && (
         <button
           onClick={onRetry}
-          className="text-xs font-semibold underline hover:no-underline text-[#A9213F] cursor-pointer"
+          className="text-xs font-semibold underline hover:no-underline text-brand-accent cursor-pointer"
         >
           Coba Lagi
         </button>

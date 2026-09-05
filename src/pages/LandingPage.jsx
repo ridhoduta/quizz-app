@@ -20,7 +20,7 @@ export const LandingPage = () => {
   };
 
   return (
-    <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
+    <div className="font-sans antialiased text-on-surface min-h-screen flex flex-col bg-background">
       <Navbar onStartTest={handleStartTest} />
       <main className="w-full pt-20 flex-grow">
         <HeroSection onStartTest={handleStartTest} />

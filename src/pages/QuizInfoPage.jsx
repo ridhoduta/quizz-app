@@ -31,7 +31,7 @@ export const QuizInfoPage = () => {
   }
 
   return (
-    <div className="font-sans antialiased text-[#151C27] min-h-screen flex flex-col bg-[#FEFCFF]">
+    <div className="font-sans antialiased text-on-surface min-h-screen flex flex-col bg-background">
       {/* Header */}
       <Header />
 
@@ -39,31 +39,31 @@ export const QuizInfoPage = () => {
       <main className="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 w-full">
         {/* Banner Section */}
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="inline-block bg-[#F0F3FF] text-[#22437C] font-semibold text-xs px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
+          <span className="inline-block bg-primary-subtle text-primary-container font-semibold text-xs px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
             INFORMASI PENGERJAAN
           </span>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#012C64] mb-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-primary mb-2">
             Petunjuk Placement Test
           </h1>
-          <p className="text-sm md:text-base text-[#434750] leading-relaxed">
-            Halo, <strong className="text-[#151C27]">{biodata.name || 'Peserta'}</strong>! Pelajari informasi dan ketentuan berikut sebelum memulai tes.
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">
+            Halo, <strong className="text-on-surface">{biodata.name || 'Peserta'}</strong>! Pelajari informasi dan ketentuan berikut sebelum memulai tes.
           </p>
         </div>
 
         {/* Unified Info Highlight Bar */}
-        <div className="bg-white border border-[#C4C6D1] rounded-2xl p-5 md:p-6 custom-shadow mb-8">
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 md:p-6 custom-shadow mb-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
             {/* 1: Jumlah Soal */}
             <div className="flex flex-col items-center text-center p-3 sm:py-0">
               <span className="text-xs font-medium text-gray-500 mb-1">Jumlah Soal</span>
-              <span className="text-2xl font-bold text-[#22437C]">15 Soal</span>
+              <span className="text-2xl font-bold text-primary-container">15 Soal</span>
               <span className="text-xs text-gray-400 mt-1">Pilihan ganda</span>
             </div>
 
             {/* 2: Waktu Pengerjaan */}
             <div className="flex flex-col items-center text-center p-3 sm:py-0">
               <span className="text-xs font-medium text-gray-500 mb-1">Waktu Pengerjaan</span>
-              <span className="text-2xl font-bold text-[#A9213F]">10 Menit</span>
+              <span className="text-2xl font-bold text-brand-accent">10 Menit</span>
               <span className="text-xs text-gray-400 mt-1">Total seluruh soal</span>
             </div>
 
@@ -77,14 +77,14 @@ export const QuizInfoPage = () => {
         </div>
 
         {/* Detailed Sections Container */}
-        <div className="bg-white border border-[#C4C6D1] rounded-2xl p-6 md:p-8 custom-shadow space-y-6 mb-8">
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 md:p-8 custom-shadow space-y-6 mb-8">
           {/* Biodata Summary */}
           <div>
-            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#22437C] text-[20px]">person</span>
+            <h2 className="text-base md:text-lg font-bold text-primary mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary-container text-[20px]">person</span>
               <span>Biodata Peserta</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-[#F9FAFB] p-4 rounded-xl border border-gray-200 text-xs md:text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-gray-f9fafb p-4 rounded-xl border border-gray-200 text-xs md:text-sm">
               <div>
                 <span className="block text-gray-500 text-[11px] mb-0.5">Nama Lengkap</span>
                 <span className="font-semibold text-gray-900">{biodata.name || '-'}</span>
@@ -99,7 +99,7 @@ export const QuizInfoPage = () => {
               </div>
               <div>
                 <span className="block text-gray-500 text-[11px] mb-0.5">Pilihan Program</span>
-                <span className="font-semibold text-[#22437C]">{biodata.targetProgram || '-'}</span>
+                <span className="font-semibold text-primary-container">{biodata.targetProgram || '-'}</span>
               </div>
             </div>
           </div>
@@ -108,11 +108,11 @@ export const QuizInfoPage = () => {
 
           {/* Ketentuan Pengerjaan (Scannable list) */}
           <div>
-            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#22437C] text-[20px]">rule</span>
+            <h2 className="text-base md:text-lg font-bold text-primary mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary-container text-[20px]">rule</span>
               <span>Ketentuan Pengerjaan</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm text-[#434750]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm text-on-surface-variant">
               <div className="flex items-start gap-2.5 p-3 rounded-lg bg-gray-50 border border-gray-100">
                 <span className="material-symbols-outlined text-emerald-600 text-base shrink-0 mt-0.5">check_circle</span>
                 <span><strong>10 menit untuk seluruh 15 soal.</strong> Atur ritme pengerjaan Anda secara mandiri.</span>
@@ -136,8 +136,8 @@ export const QuizInfoPage = () => {
 
           {/* Status Navigasi & Timer Indicators */}
           <div>
-            <h2 className="text-base md:text-lg font-bold text-[#012C64] mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#22437C] text-[20px]">info</span>
+            <h2 className="text-base md:text-lg font-bold text-primary mb-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary-container text-[20px]">info</span>
               <span>Petunjuk Status Soal & Timer</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -175,7 +175,7 @@ export const QuizInfoPage = () => {
         </div>
 
         {/* Action Callout */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-[#22437C] text-white p-6 rounded-2xl shadow-lg">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-primary-container text-white p-6 rounded-2xl shadow-lg">
           <div>
             <h3 className="font-bold text-lg md:text-xl">Sudah Siap Memulai Tes?</h3>
             <p className="text-xs md:text-sm text-blue-100 mt-0.5">
@@ -203,18 +203,18 @@ export const QuizInfoPage = () => {
             aria-labelledby="fullscreen-modal-title"
             aria-describedby="fullscreen-modal-description"
           >
-            <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-8 border border-[#C4C6D1] flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-[#E2E8F8] rounded-full flex items-center justify-center mb-4 text-[#22437C]">
+            <div className="bg-surface-container-lowest w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-8 border border-outline-variant flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4 text-primary-container">
                 <span className="material-symbols-outlined text-[36px]">
                   fullscreen
                 </span>
               </div>
 
-              <h3 id="fullscreen-modal-title" className="text-xl md:text-2xl font-bold text-[#151C27] mb-2">
+              <h3 id="fullscreen-modal-title" className="text-xl md:text-2xl font-bold text-on-surface mb-2">
                 Masuk Mode Fullscreen
               </h3>
 
-              <p id="fullscreen-modal-description" className="text-sm text-[#434750] mb-6 leading-relaxed">
+              <p id="fullscreen-modal-description" className="text-sm text-on-surface-variant mb-6 leading-relaxed">
                 Tes akan dimulai dalam <strong>mode layar penuh (fullscreen)</strong> untuk menjaga fokus pengerjaan. Pastikan Anda siap sebelum memulai kuis.
               </p>
 

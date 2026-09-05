@@ -10,12 +10,12 @@ export const WhatsAppButton = ({
   const waUrl = generateWhatsAppUrl(adminPhone, message);
 
   return (
-    <div className="w-full bg-[#F9F9FF] border border-[#C4C6D1] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center gap-6">
+    <div className="w-full bg-surface border border-outline-variant rounded-2xl p-6 md:p-8 flex flex-col items-center text-center gap-6">
       <div>
-        <h3 className="text-xl md:text-2xl font-bold text-[#012C64] mb-2">
+        <h3 className="text-xl md:text-2xl font-bold text-primary mb-2">
           Siap untuk Memulai Pembelajaran?
         </h3>
-        <p className="text-sm md:text-base text-[#434750] max-w-md leading-relaxed">
+        <p className="text-sm md:text-base text-on-surface-variant max-w-md leading-relaxed">
           Konsultasikan hasil placement test Anda dengan tim akademis kami untuk mendapatkan jadwal dan promo pendaftaran terbaik.
         </p>
       </div>
@@ -26,7 +26,7 @@ export const WhatsAppButton = ({
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center font-medium rounded-lg px-8 py-3.5 text-base gap-2.5 bg-[#A9213F] hover:bg-[#8F1A33] text-white shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer no-underline"
+          className="inline-flex items-center justify-center font-medium rounded-lg px-8 py-3.5 text-base gap-2.5 bg-brand-accent hover:bg-brand-accent-hover text-surface-container-lowest shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer no-underline"
         >
           <span className="material-symbols-outlined text-[22px] filled">
             forum

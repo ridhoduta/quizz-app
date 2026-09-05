@@ -18,7 +18,7 @@ export const HeroSection = ({ onStartTest }) => {
   return (
     <div
       id="top"
-      className="relative w-full overflow-hidden bg-[#193566] text-white"
+      className="relative w-full overflow-hidden bg-hero text-white"
     >
       <div
         className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -34,7 +34,7 @@ export const HeroSection = ({ onStartTest }) => {
           <div className="lg:col-span-7 flex flex-col items-start z-10">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.18] mb-5 max-w-2xl">
               Kursus Bahasa Inggris di BunnySpeak Bikin Makin{" "}
-              <span className="text-[#FFD166] underline decoration-wavy decoration-[#A9213F] decoration-2 underline-offset-4">
+              <span className="text-gold underline decoration-wavy decoration-brand-accent decoration-2 underline-offset-4">
                 Percaya Diri!
               </span>
             </h1>
@@ -48,7 +48,7 @@ export const HeroSection = ({ onStartTest }) => {
               <button
                 type="button"
                 onClick={handleStart}
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#22437C] text-base font-bold shadow-xl shadow-black/20 hover:bg-[#FFF9E6] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-primary-container text-base font-bold shadow-xl shadow-black/20 hover:bg-yellow-light hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
               >
                 <span>Mulai Placement Test</span>
                 <span className="material-symbols-outlined text-[20px] transition-transform duration-200 group-hover:translate-x-1">
@@ -62,7 +62,7 @@ export const HeroSection = ({ onStartTest }) => {
             <div className="relative w-full max-w-[500px]">
               <div className="relative w-full rounded-3xl overflow-hidden p-3 sm:p-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] border-2 border-white/60 transition-all duration-300 hover:shadow-[0_30px_60px_-10px_rgba(0,0,0,0.45)] group">
                 {!imgError ? (
-                  <div className="relative overflow-hidden rounded-2xl bg-[#f7f9fd]">
+                  <div className="relative overflow-hidden rounded-2xl bg-blue-lightest">
                     <img
                       src={heroImage}
                       alt="BunnySpeak Course Mascot Hero"
@@ -70,10 +70,10 @@ export const HeroSection = ({ onStartTest }) => {
                       onError={() => setImgError(true)}
                     />
 
-                    <div className="absolute inset-0 rounded-2xl pointer-events-none bg-gradient-to-t from-[#22437C]/10 via-transparent to-transparent" />
+                    <div className="absolute inset-0 rounded-2xl pointer-events-none bg-gradient-to-t from-primary-container/10 via-transparent to-transparent" />
                   </div>
                 ) : (
-                  <div className="w-full h-72 rounded-2xl bg-gradient-to-tr from-[#1a3461] to-[#2e5aa8] flex flex-col items-center justify-center p-6 text-center text-white">
+                  <div className="w-full h-72 rounded-2xl bg-gradient-to-tr from-primary-container-hover to-blue-gradient flex flex-col items-center justify-center p-6 text-center text-white">
                     <span className="material-symbols-outlined text-6xl mb-3 text-white/80">
                       school
                     </span>
@@ -92,7 +92,7 @@ export const HeroSection = ({ onStartTest }) => {
       <div className="w-full flex justify-center items-center py-2">
         <div className="flex flex-col items-center">
           <div className="w-px h-8 bg-white/30" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#A9213F] shadow-sm ring-4 ring-[#A9213F]/20" />
+          <div className="w-2.5 h-2.5 rounded-full bg-brand-accent shadow-sm ring-4 ring-brand-accent/20" />
         </div>
       </div>
     </div>

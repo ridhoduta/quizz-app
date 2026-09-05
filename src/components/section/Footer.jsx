@@ -21,22 +21,22 @@ export const Footer = ({ onStartTest }) => {
   };
 
   return (
-    <footer className="w-full bg-[#FEFCFF] border-t border-slate-200 shadow-[0_-1px_6px_rgba(34,67,124,0.03)]">
+    <footer className="w-full bg-background border-t border-slate-200 custom-shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-10 md:py-12">
         <div className="flex flex-col lg:flex-row justify-between gap-10 mb-8">
           {/* Brand Info */}
           <div className="max-w-md">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[#22437C] text-white flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center">
                 <span className="material-symbols-outlined text-[20px]">
                   school
                 </span>
               </div>
-              <span className="text-xl text-[#22437C] font-bold">
+              <span className="text-xl text-primary-container font-bold">
                 BunnySpeak Course
               </span>
             </div>
-            <p className="text-sm text-[#434750] leading-relaxed">
+            <p className="text-sm text-on-surface-variant leading-relaxed">
               Test kemampuan bahasa Inggris dan temukan program yang sesuai
               dengan levelmu bersama kurikulum berstandar CEFR.
             </p>
@@ -46,27 +46,27 @@ export const Footer = ({ onStartTest }) => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             {/* Menu Utama */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">
+              <span className="text-sm text-on-surface font-semibold">
                 Menu Utama
               </span>
               <a
                 href="#program-section"
                 onClick={(e) => scrollToSection(e, "program-section")}
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
               >
                 Program
               </a>
               <a
                 href="#cara-mengikuti"
                 onClick={(e) => scrollToSection(e, "cara-mengikuti")}
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
               >
                 Cara Mengikuti
               </a>
               <button
                 type="button"
                 onClick={handleStart}
-                className="text-left text-sm text-[#434750] hover:text-[#22437C] transition-colors cursor-pointer"
+                className="text-left text-sm text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer"
               >
                 Mulai Placement Test
               </button>
@@ -74,20 +74,20 @@ export const Footer = ({ onStartTest }) => {
 
             {/* Legalitas */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">
+              <span className="text-sm text-on-surface font-semibold">
                 Legalitas
               </span>
               <a
                 href="#privacy"
                 onClick={(e) => e.preventDefault()}
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
               >
                 Privacy Policy
               </a>
               <a
                 href="#terms"
                 onClick={(e) => e.preventDefault()}
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
               >
                 Terms of Service
               </a>
@@ -95,21 +95,21 @@ export const Footer = ({ onStartTest }) => {
 
             {/* Bantuan */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[#151c27] font-semibold">
+              <span className="text-sm text-on-surface font-semibold">
                 Bantuan
               </span>
               <a
                 href="https://wa.me/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors flex items-center gap-1"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1"
               >
                 <span>WhatsApp Support</span>
               </a>
               <a
                 href="#faq"
                 onClick={(e) => e.preventDefault()}
-                className="text-sm text-[#434750] hover:text-[#22437C] transition-colors"
+                className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
               >
                 FAQ
               </a>
