@@ -27,6 +27,7 @@ Aplikasi web placement test berbasis React untuk menguji kemampuan bahasa Inggri
 - [Error Handling](#error-handling)
 - [Environment Configuration](#environment-configuration)
 - [Testing](#testing)
+- [Alur Prompt AI](#alur-prompt-ai)
 - [Installation Guide](#installation-guide)
 - [Conclusion](#conclusion)
 
@@ -794,6 +795,167 @@ export const TIMER = {
 | 2    | Buka di tablet (768px)          | Layout adjusted, sidebar visible         | succees   |
 | 3    | Buka di desktop (1440px)        | Full layout, sidebar navigation          | succees   |
 
+
+---
+
+## Alur Prompt AI
+
+Dalam pengembangan frontend ini, saya menggunakan AI sebagai asisten selama 5 phase terpisah. Setiap phase memiliki peran yang berbeda dan tingkat keterlibatan manual yang berbeda pula.
+
+### Phase 1 — Diskusi Arsitektur & Teknologi
+
+**Alat:** ChatGPT (manual prompt)
+
+Phase pertama adalah diskusi mendalam dengan ChatGPT untuk menentukan teknologi dan arsitektur sistem sesuai kebutuhan proses bisnis yang telah dibangun.
+
+Pada phase ini saya **belum menggunakan AI agent** — semua masih berupa diskusi teks biasa. Hasil diskusi berupa saran teknologi, rekomendasi struktur folder, dan pilihan library.
+
+Namun, setelah mendapat saran dari ChatGPT, saya tetap **mengimplementasi secara manual** dalam penyusunan arsitektur system, mulai dari:
+
+- Memilih framework (React + Vite)
+- Menyusun struktur folder (`pages/`, `components/`, `hooks/`, `utils/`, `data/`, `lib/`)
+- Menentukan library yang akan digunakan (Tailwind CSS, React Router, dll)
+
+Alasannya: dengan menyusun arsitektur secara manual, saya masih memiliki **akses penuh** terhadap penyusunannya. Meski ChatGPT memberi saran struktur folder, saya tetap bisa meneliti dan mengolah bagaimana baiknya menurut kebutuhan proyek ini.
+
+```
+ChatGPT (diskusi)
+    ↓
+Saran arsitektur, teknologi, struktur folder
+    ↓
+Manual implementation (akses penuh)
+    ↓
+Arsitektur final
+```
+
+### Phase 2 — Data Layering
+
+**Alat:** ChatGPT (manual prompt)
+
+Phase kedua adalah pembuatan custom hooks sesuai dokumentasi API dari Backend Developer. Pada phase ini saya membuat:
+
+- `useBiodata.js` — untuk state biodata dan validasi
+- `useQuiz.js` — untuk state quiz, navigasi, dan submit
+- `useTimer.js` — untuk countdown timer
+- `usePrograms.js` — untuk data program
+
+Prosesnya tetap manual — saya menulis kode hooks sendiri berdasarkan pemahaman saya terhadap API documentation dari backend. ChatGPT hanya digunakan sebagai referensi untuk syntax atau pola tertentu, bukan untuk generate kode secara langsung.
+
+```
+Dokumentasi API dari Backend
+    ↓
+Pemahaman kebutuhan data flow
+    ↓
+Manual coding custom hooks
+    ↓
+Integrasi dengan localStorage
+```
+
+### Phase 3 — Komponen Reusable
+
+**Alat:** AI Agent (opencode)
+
+Phase ketiga adalah pembuatan komponen reusable. Pada phase ini saya mulai menggunakan **AI Agent** (opencode) untuk membuat komponen-komponen UI seperti:
+
+- `Button.jsx`, `Input.jsx`, `ProgressBar.jsx`
+- `QuestionCard.jsx`, `OptionButton.jsx`
+- `ResultCard.jsx`, `RecommendationCard.jsx`
+
+Namun, saya tetap dalam **pengawasan penuh** terhadap setiap kode yang dihasilkan. AI Agent membantu mempercepat proses pembuatan komponen, tetapi saya yang memutuskan:
+
+- Bagaimana komponen harus bekerja
+- Bagaimana props harus didefinisikan
+- Bagaimana styling harus diterapkan
+- Bagaimana komponen harus direusable
+
+```
+AI Agent (opencode)
+    ↓
+Generate komponen berdasarkan instruksi
+    ↓
+Code review oleh developer (pengawasan penuh)
+    ↓
+Refinement & testing
+    ↓
+Komponen siap digunakan
+```
+
+### Phase 4 — Halaman & Routing
+
+**Alat:** AI Agent (opencode)
+
+Phase keempat adalah pembuatan halaman (pages) dan route pages. Dari awal arsitektur sistem, saya sudah menentukan flow aplikasi:
+
+```
+Landing → Biodata → Info → Quiz → Result
+```
+
+Pada phase ini saya mengarahkan AI Agent untuk membuat:
+
+- `LandingPage.jsx` — halaman utama dengan hero, programs, steps, CTA
+- `BiodataPage.jsx` — form biodata dengan validasi
+- `QuizInfoPage.jsx` — informasi sebelum tes
+- `QuizPage.jsx` — halaman pengerjaan quiz dengan timer dan navigasi
+- `ResultPage.jsx` — halaman hasil dengan review soal
+- `Notfound.jsx` — halaman 404
+
+Route guards juga dibuat pada phase ini untuk melindungi halaman yang membutuhkan session.
+
+```
+Flow yang sudah ditentukan sejak Phase 1
+    ↓
+AI Agent generate halaman & routing
+    ↓
+Developer review & integrasi
+    ↓
+Route guards implementation
+    ↓
+Semua halaman terhubung
+```
+
+### Phase 5 — Debugging & Perbaikan
+
+**Alat:** AI Agent (opencode)
+
+Phase kelima adalah debugging, mencari celah keamanan, mencari bug pada halaman interface web, serta memperbaikinya menggunakan AI Agent.
+
+Beberapa contok yang dilakukan pada phase ini:
+
+- Mencari dan memperbaiki bug pada state management
+- Memperbaiki responsive design yang tidak konsisten
+- Mengganti hardcoded hex colors dengan CSS utility classes
+- Memperbaiki route guards yang tidak berfungsi dengan benar
+- Mencari edge cases pada timer dan auto-save
+
+```
+Bug / Issue ditemukan
+    ↓
+AI Agent analisis kode
+    ↓
+Suggested fix
+    ↓
+Developer review & apply fix
+    ↓
+Testing & verifikasi
+```
+
+### Ringkasan Penggunaan AI
+
+| Phase | Tahap                         | Alat              | Level Keterlibatan Developer |
+| ----- | ----------------------------- | ----------------- | --------------------------- |
+| 1     | Arsitektur & Teknologi        | ChatGPT (manual)  | Tinggi — implementasi manual penuh |
+| 2     | Data Layering                 | ChatGPT (manual)  | Tinggi — coding manual berdasarkan API docs |
+| 3     | Komponen Reusable             | AI Agent (opencode) | Sedang — AI generate, developer review |
+| 4     | Halaman & Routing             | AI Agent (opencode) | Sedang — developer arahkan, AI generate |
+| 5     | Debugging & Perbaikan         | AI Agent (opencode) | Sedang — AI analisis, developer verifikasi |
+
+### Prinsip Penggunaan AI
+
+1. **AI sebagai asisten, bukan pengganti** — Semua keputusan akhir tetap di tangan developer
+2. **Manual untuk arsitektur** — Penyusunan arsitektur dilakukan manual untuk memiliki akses penuh
+3. **AI untuk percepatan** — AI digunakan untuk mempercepat pembuatan kode, bukan untuk mengganti pemahaman
+4. **Review setiap output** — Setiap kode yang dihasilkan AI selalu direview sebelum diimplementasikan
+5. **Phase-by-phase** — Penggunaan AI dibagi per phase agar lebih terkontrol dan terarah
 
 ---
 
